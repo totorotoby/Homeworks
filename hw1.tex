@@ -1,0 +1,182 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Optimization Hw1}
+\author{Toby Harvey}
+\maketitle
+\noindent\textbf{Problem 1}
+
+
+\vspace{5mm}
+
+\begin{theorem}
+$a^Tx = \norm{a} \norm{x} \cos \theta$.
+\end{theorem}
+
+\begin{proof}
+  
+Let $\vec{a} = [a_1, a_2]$ and $\vec{x} = [x_1, x_2] \in \mathbb{R}^2$. The vector $x-a$ creates a triangle in $\mathbb{R}^2$.
+Denote the angle opposite $\vec{x}-\vec{a}$ as $\theta$. From the law of cosines we have:
+
+\begin{gather*}
+||\vec{x}-\vec{a}||^2 = ||\vec{x}||^2 + ||\vec{a}||^2 -2\norm{\vec{x}} \norm{\vec{a}}\cos \theta \\
+\implies 2\norm{\vec{x}} \norm{\vec{a}}\cos \theta = x_1^2 + x_2^2 +a_1^2 + a_2^2 - (x_1-a_1)^2 + (x_2-a_2)^2 \\
+\implies 2\norm{\vec{x}} \norm{\vec{a}}\cos \theta  = x_1^2 + x_2^2 +a_1^2 + a_2^2 - (x_1^2-2a_1x_1 + a_1^2 + x_2^2 -2a_2x_2 + a_2^2) \\
+\implies 2\norm{\vec{x}} \norm{\vec{a}}\cos \theta  = 2(a_1x_1 + a_2x_2) \\
+\implies \norm{\vec{x}} \norm{\vec{a}}\cos \theta = \vec{a} \cdot \vec{x} \\
+\end{gather*}
+
+\end{proof}
+
+\vspace{5mm}
+
+\noindent Distance between two parallel hyperplanes:
+
+\noindent Since $\vec{a}$ is normal to the the plane. The distance from orgin to the plane must be a multiple of $\vec{a}$ or  $d\vec{a}$. Solving for $d$ we get:
+
+$$d a_1^2 + d a_2^2 = b_1 \implies
+d ( a_1^2 + a_2^2) = b_1 \implies
+d =\frac{b_1}{\vec{a}}$$
+
+We need the distance between the two planes or
+$$|\frac{b_2}{\norm{\vec{a}}} - \frac{b_1}{\norm{\vec{a}}}| \implies
+\frac{|b_2 - b_1|}{\norm{a}}$$
+\newpage
+\noindent\textbf{Problem 2}
+\vspace{5mm}
+\begin{prop}
+S is a polyhedron.
+\end{prop}
+
+\begin{proof}
+
+  As seen in Boyd and Vandenberghe if we can show that $S$ is a half space we can show it is a poyhedron or is convex. To that end, we expand the inner products:
+  \begin{gather*}
+    \norm{x-x_0} \leq \norm{x-x_i} \implies  \norm{x-x_0}^2 \leq \norm{x-x_i}^2\\
+    \implies \langle x-x_0, x-x_0\rangle \leq \langle x-x_i, x-x_i\rangle\\
+    \implies \langle x, x\rangle + 2\langle x, x_0 \rangle +  \langle x_0, x_0\rangle \leq \langle x, x\rangle + 2\langle x, x_i \rangle +  \langle x_i, x_i\rangle\\
+    \implies x^Tx + 2x^Tx_0 + x_0^Tx_0 \leq x^Tx + 2x^Tx_i +  x_i^T x_i\\
+    \implies 2(x_0-x_i)x \leq  x_i^T x_i -  x_0^Tx_0 \\
+  \end{gather*}
+  
+  This is by definition a halfspace. Where $A = x_0 - x_i$ for $i = 0,...,k$, and $ b = \frac{ x_i^T x_i -  x_0^Tx_0}{2} $ for $i = 0,...,k$.
+  
+
+\end{proof}
+
+
+\noindent\textbf{Problem 3}
+
+\begin{prop}
+
+  f is convex if and only if $(\nabla f(x) - \nabla f(y))(x-y) \geq 0$ .
+
+\end{prop}
+
+\begin{proof}
+
+  If $f$ is convex then both $f(x) + \nabla f(x)(y-x) \leq f(y)$ and  $f(y) + \nabla f(y)(x-y) \leq f(x)$ dependent on if $x$ or $y$ is larger. Adding these together we get:
+
+\begin{gather*}
+  f(x) + \nabla f(x)(y-x) + f(y) + \nabla f(y)(x-y) \leq f(x) + f(y)\\
+  \implies \nabla f(x)(y-x) + \nabla f(y)(x-y) \leq 0 \implies -\nabla f(x)(y-x) - \nabla f(y)(x-y) \geq 0\\
+  \implies (\nabla f(x) - \nabla f(y))^T (x-y) \geq 0
+\end{gather*}
+
+\noindent The other way:
+
+\noindent If we say that  $(\nabla f(x) - \nabla f(y))^T (x-y) \geq 0$ and without loss of generality $x>y$ then this can only be the case if $(\nabla f(x) - \nabla f(y))$ is positive, and by hypothesis $x-y>0$ meaning we must also have $\nabla ^2 \geq 0$ at the limit. 
+
+  
+\end{proof}
+
+\vspace{5mm}
+\newpage
+\noindent\textbf{Problem 4}
+
+\vspace{3mm}
+
+\noindent 1.
+\begin{proof}Using the same technique as in class where we us the fact that $\max\{f_1(x),f_2(x),...,f_m(x)\} = f_n(x)$ for some n in $1...m$. We must show $f(x_1t + x_2(1-t)) \leq f(x_1)t + f(x_2)(1-t)$. To that end:
+
+\begin{gather*}
+  f(x_1t + x_2(1-t)) = f_n(x_1t + x_2(1-t)) \leq f_n(x_1) + f_n(x_2)(1-t)\\
+  \leq \max\{f_1(x_1),...,f_m(x_1)\} t + \max\{f_1(x_2),...,f_m(x_2)\}(1-t) \\
+  = f(x_1)t + f(x_2)(1-t)
+\end{gather*}
+
+\noindent Where the second inequality is by the fact that $f_n$ is in the set of functions that $f$ maximizes over but is not necessarly the maximum at either $x_1$ or $x_2$.
+\end{proof}
+
+
+
+\noindent2.
+
+\begin{proof}
+  
+  We use the second order condition. Differentiating $f$ with respect to $x_{ij}$ we get:
+
+
+  $$\frac{\partial f}{\partial x_{ij}} = 1\ln(x_{ij} + 1) + (x_{ij} + 1)\frac{1}{x_{ij}+1} - 1 = \ln(x_{ij}+1)\\$$
+
+  and
+
+  $$\frac{\partial^2 f}{\partial x_{ij}^2} = \frac{1}{x_{ij}+1}$$
+
+\noindent Where $\frac{\partial^2 f}{\partial x_{ij}x_{pq}} = 0$, $pq \neq ij$. Therefore the Hessian is $\frac{1}{x_{ij}+1}$ on the diagonal and $0$ otherwise, and since  $\frac{1}{x_{ij}+1}$ is positive, $f$ is convex. 
+
+  \end{proof}
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 5}
+
+\noindent We can use all facts that we have already proved, plus proof that absolute value is convex.
+
+\begin{prop}
+  absolute value is convex.
+\end{prop}
+
+\begin{proof}
+
+  \begin{gather*}
+    |tx_1 + x_2(1-t)|\\
+    \leq |tx_1| + |x_2(1-t)|\\
+    = t|x_1| + |x_2|(1-t)
+    \end{gather*}
+\end{proof}  
+
+\noindent We showed that $\ln{\frac{1}{c^Tx+d}}$ is convex in class, and $|a^Tx+b|$ is convex, and I just showed that the maximum of a set of convex functions is convex. Therefore $f(x)$ must also be convex.
+ 
+
+
+\newpage
+
+
+  Let $x_a$ and $x_b$ in $S$, so that $\norm{x_a - x_0} \leq \norm{x_a-x_i}$ and  $\norm{x_b - x_0} \leq \norm{x_b-x_i}$. We must show that $\norm{(tx_a + (1-t)x_b) - x_0} \leq  \norm{(tx_a + (1-t)x_b)-x_i}$. To that end we have:
+
+\begin{gather*}
+  \norm{tx_a + (1-t)x_b - x_0} = \norm{tx_a+x_b - tx_b -x_0} \leq \norm{x_b-x_0} + \norm{tx_a-tx_b} \\
+  \leq \norm{x_b-x_i} + t\norm{x_a-x_b}\\
+\end{gather*}
+
+
+
+
+
+
+
+
+
+
+\end{document}
