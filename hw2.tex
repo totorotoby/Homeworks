@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Optimization Hw2}
+\author{Toby Harvey}
+\maketitle
+\noindent\textbf{Problem 1}
+
+\vspace{5mm}
+
+\noindent Let $\lambda_1$ and $\lambda_2$ be the dual variables of the first two constraints, repsectively, let $\theta_i$ be the dual variable for each $x_i$ sign constraint, and let $\delta$ be the dual variable of the equality constraint. The the Langragian is:
+
+\begin{gather*}
+  L(x,\lambda,\theta,\delta) = -a_1x_1 -a_2x_2 -a_3x_3\\
+  + \lambda_1(b_1x_1 + b_2x_2 + b_3x_3 - e_1) \\
+  + \lambda_2(-c_1x_1 - c_2x_2 + e_2) \\ 
+  - \theta_1 x_1 - \theta_2 x_2 + \theta_3 x_3 + \delta(d_3x_3 - e_3) \\
+\end{gather*}
+
+Which when reararanged gives:
+
+\begin{gather*}
+   L(x,\lambda,\theta,\delta) = (-a_1 + \lambda_1b_1 - c_1\lambda_2 - \theta_1) x_1 \\
+  + (-a_2 +\lambda_1b_2 - c_2\lambda_2 - \theta_2) x_2 \\
+  + (-a_3 + \lambda_1b_3 + \theta_3 + \delta d_3) x_3 \\
+  + (-\lambda_1e_1 + \lambda_2e_2 - \delta e_3) \\
+\end{gather*}
+  
+
+
+
+
+\end{document}
