@@ -16,26 +16,161 @@
 \maketitle
 \noindent\textbf{Problem 1}
 
+
 \vspace{5mm}
 
-\noindent Let $\lambda_1$ and $\lambda_2$ be the dual variables of the first two constraints, repsectively, let $\theta_i$ be the dual variable for each $x_i$ sign constraint, and let $\delta$ be the dual variable of the equality constraint. The the Langragian is:
+\noindent Let $\lambda_1$ and $\lambda_2$ be the dual variables of the first two constraints, repsectively, let $\theta_1$ be the dual variable for the equality constraint and let $\lambda_3, \lambda_4 \lambda_5$ be the dual variables for the constraints on the sign of the $x$'s. The the Langragian is:
 
 \begin{gather*}
   L(x,\lambda,\theta,\delta) = -a_1x_1 -a_2x_2 -a_3x_3\\
   + \lambda_1(b_1x_1 + b_2x_2 + b_3x_3 - e_1) \\
   + \lambda_2(-c_1x_1 - c_2x_2 + e_2) \\ 
-  - \theta_1 x_1 - \theta_2 x_2 + \theta_3 x_3 + \delta(d_3x_3 - e_3) \\
+  + \theta_1(d_3 x_3 - e_3) \\
+  + \lambda_3(-x_1) + \lambda_4(-x_2) + \lambda_5(x_3)
 \end{gather*}
 
 Which when reararanged gives:
 
 \begin{gather*}
-   L(x,\lambda,\theta,\delta) = (-a_1 + \lambda_1b_1 - c_1\lambda_2 - \theta_1) x_1 \\
-  + (-a_2 +\lambda_1b_2 - c_2\lambda_2 - \theta_2) x_2 \\
-  + (-a_3 + \lambda_1b_3 + \theta_3 + \delta d_3) x_3 \\
-  + (-\lambda_1e_1 + \lambda_2e_2 - \delta e_3) \\
+   L(x,\lambda,\theta,\delta) = (-a_1 + b_1\lambda_1 - c_1\lambda_2 - \lambda_3) x_1 \\
+  + (-a_2 +b_2\lambda_1 - c_2\lambda_2 - \lambda_4) x_2 \\
+  + (-a_3 + b_3\lambda_1 + d_3\theta_1 + \lambda_5) x_3 \\
+  + (-e_1\lambda_1 + e_2\lambda_2 - e_3\theta) \\
+\end{gather*}
+
+Minimizing the Lagrangian over $x$, we find that since it is linear, the only instance where $L$ has a minimum are when $x_1, x_2$, and $x_3$ are all 0.
+
+Which means that we can write the dual problem as:
+
+\begin{gather*}
+  \max \hspace{3mm} -e_1\lambda_1 + e_2\lambda_2 - e_3\theta_1\\
+  \text{st.  } -a_1 + b_1\lambda_1 - c_1\lambda_2 - \lambda_3 = 0 \\
+  -a_2 + b_2\lambda_1 - c_2\lambda2 - \lambda_4 = 0 \\
+  -a_3 + b_3\lambda_1 + d_3\theta_1 + \lambda_5 = 0 \\
+  \lambda_1, \lambda_2, \lambda_3, \lambda_4, \lambda_5, \geq 0 \\
+\end{gather*}
+ 
+\newpage
+
+Before formulating the Dual KKT conditions we can eliminate the dual problems dependence on $\lambda_3, \lambda_4$, and $\lambda_5$, because none appear in the objective function. This can be done 3 times. The first constraint paired with the fact that $\lambda_3$ is non-negative gives:
+
+$$ -a_1 + b_1\lambda_1 - c_1\lambda_2 - \lambda_3 = 0 \implies  -a_1 + b_1\lambda_1 - c_1\lambda_2 \geq 0 \implies  a_1 - b_1\lambda_1 + c_1\lambda_2 \leq 0$$
+
+The same goes almost identically for the second constraint, and the third becomes less than instead of greater than:
+
+$$-a_3 + b_3\lambda_1 + d_3\theta_1 + \lambda_5 = 0 \implies -a_3 + b_3\lambda_1 + d_3\theta_1 \leq 0$$
+
+The dual problem rewritten is then:
+
+\begin{gather*}
+  \min \hspace{3mm} e_1\lambda_1 - e_2\lambda_2 + e_3\theta_1\\
+  \text{st.  } a_1 - b_1\lambda_1 + c_1\lambda_2 \leq 0 \\
+  a_2 - b_2\lambda_1 + c_2\lambda_2 \leq 0 \\
+  -a_3 + b_3\lambda_1 + d_3\theta_1 \leq 0 \\
+  \lambda_1, \lambda_2 \geq 0 \\
+\end{gather*}
+
+Letting $\delta_1, \delta_2$ and $\delta_3$ be the dual variables for the first 3 constraints, and $\alpha_1$ and $\alpha_2$ be the dual variables for the sign constraints. The Lagrangian is then:
+
+\begin{gather*}
+  L(\lambda, \theta, \delta, \alpha) =  e_1\lambda_1 - e_2\lambda_2 + e_3\theta_1\\
+  + \delta_1 (a_1 - b_1\lambda_1 + c_1\lambda_2) \\
+  + \delta_2 (a_2 - b_2\lambda_1 + c_2\lambda_2) \\
+  + \delta_3 (-a_3 + b_3\lambda_1 + d_3\theta_1) \\
+  - \alpha_1 \lambda_1 - \alpha_2 \lambda_2 \\
+\end{gather*}  
+
+
+To get the stationary condition we take the gradient of the Lagrangian (in this case with respect to $\lambda_1, \lambda_2$ and $\theta_1$) and set it equal to 0. First rearraging gives:
+
+\begin{gather*}
+  L(\lambda, \theta, \delta, \alpha) = \lambda_1(e_1 - b_1 \delta_1 - b_2\delta_2 - \alpha)\\
+ + \lambda_2(-e_2 + c_1\delta_1 + c_2\delta_2 - \alpha_2)\\
+ + \theta_1(e_3 + d_3\delta_3)\\
+ + (a_1\delta_1 + a_2\delta_2 - a_3\delta) 
+\end{gather*}
+
+\newpage
+
+Taking the gradient and setting it equal to 0 gives us the 3 stationary conditions:
+
+\begin{gather*}
+  (e_1 - b_1 \delta_1 - b_2\delta_2 - \alpha) = 0\\
+  (-e_2 + c_1\delta_1 + c_2\delta_2 - \alpha_2) = 0\\
+  (e_3 + d_3\delta_3) = 0\\
+\end{gather*}
+
+For complementary slackness we have:
+
+
+\begin{gather*}
+  \delta_1 (a_1 - b_1\lambda_1 + c_1\lambda_2) = 0\\
+  \delta_2 (a_2 - b_2\lambda_1 + c_2\lambda_2) = 0\\
+  \delta_3 (-a_3 + b_3\lambda_1 + d_3\theta_1) = 0\\
+  \alpha_1 \lambda_1 = 0\\
+  \alpha_1 \lambda_2 = 0\\
+\end{gather*}  
+
+And for Feasibility we have the constraints in the dual problem above. 
+
+\vspace{5mm}
+
+\noindent\textbf{Problem 2}
+
+Letting $\lambda_j$ be for the dual variable for the first $n$ constraints, $\theta_i$ be the dual variables for the next $m$ constraints, and $\delta_{ij}$ be the constraints for the last sign constraints, the Lagragian then is:
+
+\begin{gather*}
+  L(x,\lambda,\theta,\delta) = \sum_{i=1}^m \sum_{j=1}^n a_{ij}x_{ij} \\
+  + \sum_{i=1}^m\sum_{j=1}^n b_{ij}((x_{ij} + 1)\ln(x_{ij} + 1) - x_{ij} \\
+  + \sum_{j=1}^n \lambda_j (c_j - \sum_{i=1}^m x_{ij}) + \sum_{i=1}^m \theta_i (\sum_{j=1}^n (x_{ij} + c_j) - \sum_{i=1}^m \sum_{j=1}^n x_{ij} + d_j)\\
+  + \sum_{i=1}^m\sum_{j=1}^n \delta_{ij}x_{ij} \\
+\end{gather*}
+
+If we take the gradient of the Lagragian with respect to $x_{ij}$ we will get $n \times m $ constraints each for a particular $i$ and $j$. Differentiating each term by each $x_{ij}$ gives:
+
+$$a_{ij} + b_{ij}\ln(x_{ij} + 1) - \lambda_j + \theta_i - m\theta_i + \delta_{ij} \hspace{3mm}  \forall i,j$$
+
+Where the derivative of the log term comes from last homework.
+To fulfill the stationary condition the above must be equal to 0.
+For complementary slackness we have:
+
+\begin{gather*}
+  \lambda_j (c_j - \sum_{i=1}^m x_{ij}) = 0 \hspace{3mm} \forall j \\
+  \theta_i (\sum_{j=1}^n (x_{ij} + c_j) - \sum_{i=1}^m \sum_{j=1}^n x_{ij} + d_j) = 0 \hspace{3mm} \forall i \\
+  \delta_{ij}x_{ij} = 0 \hspace{3mm} \forall i,j \\
+  \end{gather*}
+
+Primal feasability are the constraints of the orginal problem, and dual feasability gives:
+
+\begin{gather*}
+  \lambda_j \geq 0 \hspace{3mm} \forall j\\
+  \theta_i \geq 0 \hspace{3mm} \forall i\\
+  \delta_{ij} \geq 0 \hspace{3mm} \forall i,j\\
+\end{gather*}
+
+
+
+\vspace{5mm}
+\noindent\textbf{Problem 3}
+
+\begin{gather*}
+  \min \vspace{3mm} x\\
+  \text{st.  } x^2 \leq 0
 \end{gather*}
   
+Is a case where this happens. Slaters condition is not satisfied because the only feasible point is 0, which is ``up against'' the inequality. Finding the stationary conditions to this problem, by letting $\lambda$ be the dual variable of the only constraint we have:
+
+\begin{gather*}
+  L(x,\lambda) = x + \lambda x^2  \\
+  \text{Stationary:  } x = -\frac{1}{2\lambda}\\
+\end{gather*}
+
+But a solution must be both primal and dual feasible i.e. $x^2 \leq 0$, and $\lambda > 0$. If $\lambda > 0$ then we know that the right have side of the stationary constraint is negative, meaning that $x$ is negative, but the only feasible point for $x$ is 0 by the constraint $x^2 \leq 0$. Therefore the KKT conditions do not hold in this case. 
+
+
+
+
+
 
 
 
