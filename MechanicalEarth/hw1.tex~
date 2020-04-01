@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Mechanical Earth Hw1}
+\author{Toby Harvey}
+\maketitle
+\noindent\textbf{Problem 1}
+
+\begin{enumerate}
+\item $\rho \frac{\partial v_z}{\partial t} [=] \frac{\text{M}}{\text{L}^3}\frac{\text{L}}{\text{T}^2} = \frac{\text{M}}{\text{L}^2\text{T}^2}$
+
+  $\frac{\partial P}{\partial z} [=] \frac{\frac{\text{ML}}{\text{T}^2}}{\text{L}^2}\frac{1}{\text{L}} = \frac{\text{M}}{\text{T}^2\text{L}^2}$
+
+  $\eta\frac{\partial^2v_z}{\partial x^2} [=] \frac{\text{M}}{\text{LT}}\frac{\text{L}}{\text{T}}\frac{1}{\text{L}^2} = \frac{\text{M}}{\text{T}^2\text{L}^2}$
+
+  $\rho g [=] \frac{\text{M}}{\text{L}^3} \frac{L}{T^2} = \frac{\text{M}}{\text{L}^2\text{T}^2}$
+
+\item Independent Variables: $z, x, t$
+
+  Depedent Variables: $v_z, P$
+
+  material properties: $\rho, \eta, g$
+
+\item
+  
+\end{enumerate}
+
+\noindent\textbf{Problem 4}
+\begin{enumerate}
+\item\begin{gather*}
+  \rho \frac{\partial v_1}{\partial t} = - \frac{\partial P}{\partial x_1} + \eta \left(\frac{\partial^2 v_1}{\partial x_1 ^ 2} + \frac{\partial^2 v_1}{\partial x_2 ^ 2} + \frac{\partial^2 v_1}{\partial x_3 ^ 2}\right) + \rho g_1\\
+  \rho \frac{\partial v_2}{\partial t} = - \frac{\partial P}{\partial x_1} + \eta \left(\frac{\partial^2 v_2}{\partial x_1 ^ 2} + \frac{\partial^2 v_2}{\partial x_2 ^ 2} + \frac{\partial^2 v_2}{\partial x_3 ^ 2}\right) + \rho g_2\\
+    \rho \frac{\partial v_3}{\partial t} = - \frac{\partial P}{\partial x_1} + \eta \left(\frac{\partial^2 v_3}{\partial x_1 ^ 2} + \frac{\partial^2 v_3}{\partial x_2 ^ 2} + \frac{\partial^2 v_3}{\partial x_3 ^ 2}\right) + \rho g_3\\
+\end{gather*}
+\item
+  $\nabla P = \begin{bmatrix}
+  \frac{\partial P}{\partial x_1}\\
+  \frac{\partial P}{\partial x_2}\\
+  \frac{\partial P}{\partial x_3}\\
+  \end{bmatrix}$\\
+\item$\nabla^2 v_x = \nabla\cdot\nabla v_x =\frac{\partial^2 v_x}{\partial x_1 ^2} +  \frac{\partial^2 v_x}{\partial x_2 ^2} +  \frac{\partial^2 v_x}{\partial x_3 ^2}$
+\end{enumerate}
+
+\end{document}

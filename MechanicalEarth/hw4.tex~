@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\begin{document}
+
+\title{Mechanical Earth Hw2}
+\author{Toby Harvey}
+\maketitle
+
+\noindent\textbf{Problem 1}
+
+\begin{gather*}
+  \epsilon_{11} = \frac{\partial u_1}{\partial x_1}\\
+  E_{11} = \frac{\partial u_1}{\partial x_1} +\frac{1}{2} \left(\frac{\partial u_1}{\partial x_1}\right)^2\\
+\end{gather*}
+
+So that the error equals:
+
+\begin{gather*}
+  \left|\frac{\epsilon_{11} - E_{11}}{E_{11}}\right| = .1\\
+  \left|\frac{\frac{1}{2}\left(\frac{\partial u_1}{\partial x_1}\right)^2}{ \frac{\partial u_1}{\partial x_1} + \frac{1}{2}\left(\frac{\partial u_1}{\partial x_1}\right)^2}\right| = .1\\
+  \frac{1}{2}\left(\frac{\partial u_1}{\partial x_1}\right)^2 = \frac{1}{10}\left|\frac{\partial u_1}{\partial x_1}\right| + \frac{1}{20}\left(\frac{\partial u_1}{\partial x_1}\right)^2\\
+  \frac{9}{20}\left(\frac{\partial u_1}{\partial x_1}\right)^2 -  \frac{1}{10}\left|\frac{\partial u_1}{\partial x_1}\right| = 0\\
+  \frac{\partial u_1}{\partial x_1} \left(\frac{9}{20}\frac{\partial u_1}{\partial x_1} \pm \frac{1}{10}\right) = 0\\
+  \frac{\partial u_1}{\partial x_1} = \pm \frac{2}{9}\\
+\end{gather*}
+
+\newpage
+
+
+\noindent\textbf{Problem 2}
+
+
+\noindent a) We have these three equations:
+
+\begin{gather}
+  \sigma_{33} = \frac{E\nu}{(1+\nu)(1-2\nu)}(\epsilon_{11} + \epsilon_{22})\\
+  \epsilon_{11} = \frac{1+\nu}{E}\sigma_{11} - \frac{\nu}{E}(\sigma_{11} + \sigma_{22} + \sigma_{33})\\
+  \epsilon_{22} = \frac{1+\nu}{E}\sigma_{22} - \frac{\nu}{E}(\sigma_{11} + \sigma_{22} + \sigma_{33})
+\end{gather}
+
+Plugging (2) and (3) into one we get:
+
+\begin{gather*}
+  \sigma_{33} = \frac{E\nu}{(1+\nu)(1-2\nu)}(\frac{1+\nu}{E}\sigma_{11} - \frac{\nu}{E}(\sigma_{11} + \sigma_{22} + \sigma_{33}) +  \frac{1+\nu}{E}\sigma_{22} - \frac{\nu}{E}(\sigma_{11} + \sigma_{22} + \sigma_{33}))\\
+  \sigma_{33} = \frac{\nu}{1 - 2\nu}\sigma_{11} - \frac{\nu^2}{(1+\nu)(1-2\nu)}(\sigma_{11} + \sigma_{22} + \sigma_{33}) + \frac{\nu}{1 - 2\nu}\sigma_{22} - \frac{\nu^2}{(1+\nu)(1-2\nu)}(\sigma_{11} + \sigma_{22} + \sigma_{33})\\
+  (1+\nu)(1-2\nu)\sigma_{33} = (\nu + \nu^2)\sigma_{11} + (\nu + \nu^2)\sigma_{22} - 2\nu^2(\sigma_{11} + \sigma_{22} + \sigma_{33})\\
+  \sigma_{33} - \nu\sigma_{33} - 2\nu^2\sigma_{33} = \nu\sigma_{11} + \nu^2\sigma_{11} + \nu\sigma_{22} + \nu^2\sigma_{22} -2\nu^2\sigma_{11}  -2\nu^2\sigma_{22} -2\nu^2\sigma_{33}\\
+  (1-\nu)\sigma_{33} = \nu\sigma_{11}- \nu^2\sigma_{11} +\nu\sigma_{22} - \nu^2\sigma_{22}\\
+  (1-\nu)\sigma_{33} = (1-\nu)\nu\sigma_{11} + (1-\nu)\nu\sigma_{22}\\
+  \sigma_{33} = \nu(\sigma_{11} + \sigma_{22})
+\end{gather*}
+
+\noindent b) From the RHS of a) we know that $\lambda \epsilon_{kk}\delta_{ij} = \nu(\sigma_{11} + \sigma_{22})\delta_{ij}$ for plane strain, So:
+
+$$ \sigma_{ij} = 2\mu\epsilon_{ij} + \lambda\epsilon_{kk}\delta_{ij}$$
+
+becomes (since $\epsilon_{13} = \epsilon_{23} = \epsilon_{33} = 0$) only the 4 equations:
+
+\begin{gather*}
+  2\mu\epsilon_{11} = \sigma_{11} - \nu(\sigma_{11} + \sigma_{22}) \\
+  2\mu\epsilon_{12} = \sigma_{12} \\
+  2\mu\epsilon_{11} = \sigma_{21} \\
+   2\mu\epsilon_{22} = \sigma_{22} - \nu(\sigma_{11} + \sigma_{22})\\
+\end{gather*}
+
+Which compactly can be written as:
+
+$$ 2\mu\epsilon_{\alpha\beta} = \sigma_{\alpha\beta} - \nu(\sigma_{11} + \sigma_{22})\delta_{\alpha\beta}\qquad \alpha, \beta = 1, 2 $$
+
+
+\noindent c) we need to find $\lambda\epsilon_{kk}\delta_{ij}$ interms of stress assuming $\sigma_{13} = \sigma_{23} = \sigma_{33} = 0$:
+
+\begin{gather*}
+  \lambda\epsilon_{kk}\delta_{ij} = \frac{E\nu}{(1+\nu)(1-2\nu)}\epsilon_{kk}\\
+  = \frac{E\nu}{(1+\nu)(1-2\nu)} \left(\frac{1 + \nu}{E} \sigma_{11} - \frac{\nu}{E}(\sigma_{11} + \sigma_{22}) + \frac{1 + \nu}{E} \sigma_{22}  - \frac{\nu}{E}(\sigma_{11} + \sigma_{22}) - \frac{\nu}{E}(\sigma_{11} + \sigma_{22})\right)\\
+  =  \frac{E\nu}{(1+\nu)(1-2\nu)} \left(\frac{1 + \nu}{E} (\sigma_{11} + \sigma_{22}) -  \frac{3\nu}{E}(\sigma_{11} + \sigma_{22})\right)\\
+  = \frac{\nu}{1-2\nu} (\sigma_{11} + \sigma_{22}) - \frac{3\nu^2}{(1+\nu)(1-2\nu)}(\sigma_{11} + \sigma_{22})\\
+  = \frac{\nu\sigma_{11} - 2\nu^2\sigma_{11} + \nu\sigma_{22} - 2\nu^2\sigma_{22}}{(1+\nu)(1-2\nu)}\\
+  = \frac{\nu\sigma_{11} (1 - 2\nu) + \nu\sigma_{22} (1 - 2\nu)}{(1+\nu)(1-2\nu)}\\
+  = \frac{\nu}{1+\nu} (\sigma_{11} + \sigma_{22})\\
+\end{gather*}
+
+
+\noindent\textbf{Problem 3}
+
+a) For strain:
+
+$$ \epsilon_{ij} = \frac12\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}\right)$$
+
+So taking into account all of the zero displacement gradients we have:
+
+\begin{gather*}
+  \epsilon_{31} = \frac12\frac{\partial u_3}{\partial x_1} = \epsilon_{13}\\
+  \epsilon_{32} = \frac12\frac{\partial u_3}{\partial x_2} = \epsilon_{23}
+\end{gather*}
+
+\vspace{3mm}
+
+b) Using Hooke's law:
+
+$$ \sigma_{ij} = 2\mu\epsilon_{ij} + \lambda\epsilon_{kk}\delta_{ij}$$
+
+We get that:
+
+\begin{gather*}
+\sigma_{31} = 2\mu\epsilon_{31} = \mu\frac{\partial u_3}{\partial x_1} = \sigma_{13}\\
+\sigma_{32} = 2\mu\epsilon_{32} = \mu\frac{\partial u_3}{\partial x_2} = \sigma_{23}\\
+\end{gather*}
+
+
+
+
+\end{document}

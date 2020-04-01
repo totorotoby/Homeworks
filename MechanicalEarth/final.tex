@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Final: Adding Poroelastisity to Elastic Equilibrium equations}
+\author{Toby Harvey}
+\maketitle
+
+\noindent What I'm going to write about comes from Segall (2010), and A finite difference mthod for earthquake sequences in poroelastic solids, Torberntsson, Stiernstrom, Mattsson, Dunham (2018).
+
+\vspace{3mm}
+
+\noindent 0. One extremely general question is: How does fluid flow and pore pressure in Poroelastic solids effect the stress and displacement field of faults undergoing slip? In our orginal elastic equalibrium equations we idealize the earth to a elastic solid when in reality it is also full of pores. How does accounting for these pores effect our model? To begin looking into this we can think about a two-dimensional plane strain model with poroelastisity.
+
+\noindent 1. Segall describes an Idealized experiment in which if we apply an instantaneous stress to a poroelastic solid, and  we get an immediate elastic response with "undrained'' elastic constants, specfically the volumetric strain is scaled by the undrained bulk modulus, which in turn increases the pore pressure, $p$, where:
+
+$$p = -B \Delta\frac{\sigma_{kk}}{3}$$
+
+and $B$ is Skemptons pore pressure coefficient. Then as time continues and the rock is allowed to drain pressure will eventually return to 0, and volumentric strain will be scaled by the drained bulk modulus. Finding what the drained and undrained bulk moduli, and Skemptons coefficent are for certain materials would be important to understanding my problem better. These could be done on a small scale in a lab by applying stresses to rocks, and messuring the response, or potentially in the field my measuring subsidance and long term displacements after seismic activity in the time period where porepressure is changing.
+
+\noindent 2. One easy simplification we can make is to assume we are dealing with only isotropic material. This will drastically decrease the number of coffients we have to deal with in our constituative law. Then our material properties become direction indepent, and we only need to take into account 1 coefficient in our constituative law.
+
+\noindent 3. If we consider a plane strain model (where there is no displacement in the $x_3$ direction and displacements are only a function of $x_1$ and $x_2$), we can impose as boundary condition along the fault where there is a uniform displacement along the $x_3$, so something like  $u(x_3 = 0, t=\infty) = c$. We will also need an intial condition for pore pressure. Making it constant over the entire domain at first would definitely make the problem simpler which is always good, so something like  $p(t=0) = p_0$.
+
+\noindent 4/5. For this problem we have Hookes law again as our constituative law but we need to add a term to the RHS to take into account pore pressure. From Segall it seems that this term is also taken to be linear giving the constituative law:
+
+$$2\mu\epsilon_{ij} = \sigma_{ij} - \lambda\sigma_{kk}\delta_{ij} + \alpha p \delta_{ij}$$
+
+We can then substitute the constituative law into the equilibrium equations and get:
+
+$$\frac{\partial}{\partial x_j}\left[\mu\left(\frac{\partial u_i}{\partial x_j} + \frac{\partial u_i}{\partial x_j}\right)\right] + \frac{\partial}{\partial x_i}\left[\lambda\frac{\partial u_j}{\partial x_j}\right] - \frac{\partial \alpha p}{\partial x_i} = 0$$
+
+Lastly we need some equation that will give the loss of pressure over time that we can couple to the equalibrium equation, the paper I referenced at the beging gives one but I would need to dive into that to really understand where it comes from. It is the heat equation with an added cross derivative. I would like to go look at how this is derived.
+
+\noindent 6. If we consider a plane strain set up then we can reduce the equilbrium equations down to 2 equations with 3 terms (the third term comes from the pore pressure). Again using a constant displacement boundary condition and constant pressure intial conditions may simply solving the equations.
+
+\noindent 7. The paper I referenced does a finite difference solution to the plane strain problem. Ive been working with finite element a lot, and while finite element is usually used for BVPs it would be interesting to try a finite element solution. It looks like Segall gets an anayltic solution with a Laplace transform for one case of plane strain.
+
+
+\noindent 8/9. Ideally we would like a solution for both stress and strain, they would be functions of both $x_1$, $x_2$ and time. Ideally after the pore pressure subsides we would like as time goes to infinity for the solution to look the same as the static solution for an elastic solid. Plotting cross sections of displacement in space by time would be inform us about the effects of pore pressure on displacement.
+
+
+\noindent 10. We could compare satellite data of displacements over time around the fault after the intial slip, to see if the pore pressure term we added is good. i.e. calculate the error between the two.
+
+\end{document}
