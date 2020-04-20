@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Linear Algebra Hw2}
+\author{Toby Harvey}
+\maketitle
+
+
+\noindent \textbf{(3c)} Let $W$ be the space in question.
+
+\vspace{3mm}
+\noindent Existence of additive identity:
+
+
+\noindent The additive identity of $\mathbb{R}^{(-4,4)}$ is $f(x) = 0$ where $x \in (-4,4)$. This is in the space W, because $f^{\prime}(-1) = 3f(2) = 0$.
+
+\vspace{3mm}
+
+\noindent Addition is closed:
+
+\noindent Let $f,g \in W$. Then we have:
+
+$$ (f + g)^{\prime}(-1) = f^{\prime}(-1) + f^{\prime}(-1) = 3f(2) + 3g(2) = 3(f+g)(2)$$
+
+\vspace{3mm}
+
+\noindent Scalar Multiplication is closed:
+
+\noindent Let $\lambda \in \mathbb{R}$, and $f \in W$. Then we have:
+
+$$(\lambda f)^{\prime}(-1) = \lambda f^{\prime}(-1) = \lambda 3f(2) = 3 (\lambda f)(2)$$
+
+
+\noindent Therefore $W$ is a subspace
+
+
+\vspace{9mm}
+
+
+\noindent\textbf{(4c)} Let $W$ be the space in question.
+
+\vspace{3mm}
+
+\noindent The additive identity for $\mathbb{R}^{[0,1]}$ is $f(x) = 0$ where $x \in [0,1]$.
+If $f(x) \in W$ we must have:
+
+$$\int_0^1 (f) dx = 0 = b$$
+
+\noindent The only way this is possible is if $b = 0$.
+
+\vspace{3mm}
+
+\noindent Let $f, g \in W$. Then we know:
+
+$$\int_0^1 (f + g) dx = \int_0^1 f dx + \int_0^1 g dx = b + b = 2b$$
+
+\noindent If we want closer under addition we need $\int_0^1 (f + g) dx = b$, and the only way this is possible is if $b=0$.
+
+\newpage
+
+\noindent Let $\lambda \in \mathbb{R}$. For closer under scalar multiplication we have:
+
+$$\int_0^1 (\lambda f) dx = \lambda \int_0^1 fdx = \lambda b$$
+
+\noindent If we want closer under scalar multiplication we need $\int_0^1 (\lambda f) dx = b$, and that is only possible with $b=0$.
+
+\noindent So $W$ is a subspace if $b = 0$.
+
+\noindent Now we must show that the functions in $R^{[0,1]}$ such that $\int_0^1 f dx = 0$, call this space $W$, form a subspace.
+
+
+\noindent The addative identity of $R^{[0,1]}$, $f(x) = 0$ is infact in $W$ because:
+
+$$\int_0^1 f  dx = 0$$
+
+\noindent Closed under addation: Let $f,g \in W$ then to show closer under addation we have:
+
+$$\int_0^1 (f + g) dx = \int_0^1 f dx + \int_0^1 g dx = 0 + 0 = 0$$
+
+\noindent Closed under scalar multiplication: Let $\lambda \in \mathbb{R}$ and $f \in W$. scalar multiplication is closed because:
+
+$$\int_0^1 (\lambda f) dx = \lambda \int_0^1 fdx = \lambda 0 = 0$$
+
+\noindent Therefore $W$ is a subspace if and only if $b = 0$.
+
+
+\vspace{9mm}
+
+\noindent\textbf{(5c)}Assume the field on $\mathbb{C}^2$ is $\mathbb{R}$.
+
+\noindent The additive identity for $\mathbb{C}^2$ is $(0 + 0i, 0 + 0i) = (0, 0) \in \mathbb{R}^2$
+
+\noindent Let $(a,b), (c,d) \in \mathbb{R}^2$. Closure under vector addition:
+
+$$(a,b) + (c,d) = ((a+c), (b+d)) \in \mathbb{R}^2$$
+
+
+\noindent Let $\lambda \in R$. Closure under scalar multiplication:
+
+$$ \lambda (a,b) = (\lambda a, \lambda b) \in \mathbb{R}^2$$
+
+
+\vspace{3mm}
+
+\noindent\textbf{(7c)} The set:
+
+$$U = \{(x,y) : x \in \mathbb{Z} \text{ and } y \in \mathbb{Z} \}$$
+
+\noindent Addition is closed because if $(x_1, y_1), (x_2, y_2) \in U$, we have $x_1 + x_2 \in \mathbb{Z}$ and $y_1 + y_2 \in \mathbb{Z}$, so $(x_1, y_1) + (x_2, y_2) \in U$. $U$ is closed  under addative inverses, because if $(x,y) \in U$ we have $(x,y) + (-x, -y) = 0$, and $-x_1 \in Z$ and $-y_1 \in \mathbb{Z}$ Therefore $(-x,-y) \in U$. For scalar multiplication assuming the field over $\mathbb{R}^2$ is $\mathbb{R}$. Then letting $a \in \mathbb{R}$, and $(x,y) \in U$,  $a(x,y)$ is not necessarly in $U$ if $a \notin \mathbb{Z}$.
+
+
+\vspace{3mm}
+
+\noindent\textbf{(15c)}
+$$U + U = \{v \in V : v = u_1 + u_2 \text{ where } u_1,u_2 \in U \}$$
+Since $U$ is a subspace of $V$, $U$ is closed under addition, so it follows that $v = u_1 + u_2 \in U$, so $U+U \subseteq U$. To show the other inclusion. Since $u_1, u_2 \in U$ we have that either could be equal to the addative identity, $0$, so that $v = u_1 + 0 = u_1$, or $v = u_2 + 0 = u_2$. This shows thats $U \subseteq U + U$. So by double inclusion $U = U+U$.
+
+
+\vspace{3mm}
+
+\noindent\textbf{(19c)}
+
+
+\vspace{3mm}
+
+
+
+\noindent\textbf{(1a)} If we can find linear combinations of $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$, that equal each of $v_1, v_2, v_3, v_4$ then we know that since a linear combination of linear combinations is just another linear combination, and that $v_1, v_2, v_3, v_4$ spans $V$ then $v_1 - v_2, v_2 - v_3, v_3 - v_4, v_4$ must also span $V$. Symbolically we have:
+
+\begin{gather*}
+  v_1 = 1(v_1 - v_2) + 1(v_2 - v_3) + 1(v_3 - v_4) + 1(v_4) \\
+  v_2 = 0(v_1 - v_2) + 1(v_2 - v_3) + 1(v_3 - v_4) + 1(v_4) \\
+  v_3 = 0(v_1 - v_2) + 0(v_2 - v_3) + 1(v_3 - v_4) + 1(v_4) \\
+  v_4 = 0(v_1 - v_2) + 0(v_2 - v_3) + 0(v_3 - v_4) + 1(v_4) \\
+\end{gather*}
+
+\noindent Now since we have new expressions for $v_1, v_2, v_3, v_4$, we can rewrite a linear combination of these vectors as an arbitrary vector $v \in V$ as:
+
+\begin{gather*}
+  v = c_1(1(v_1 - v_2) + 1(v_2 - v_3) + 1(v_3 - v_4) + 1(v_4))\\
+  + c_2(1(v_2 - v_3) + 1(v_3 - v_4) + 1(v_4)) \\
+  + c_3(1(v_3 - v_4) + 1(v_4)) \\
+  + c_4(1(v_4)) \\
+\end{gather*}
+
+\noindent Factoring out the 1 here we see that this new set of vectors also spans $V$.
+
+\vspace{3mm}
+
+\noindent\textbf{(3A)} If $(3,1,4), (2,-3,5), (5,9,t)$ are not linearly indepedent then there exists $a_1, a_2, a_3$ not all 0 such that:
+
+$$a_1(3,1,4) + a_2(2,-3,5) + a_3(5,9,t) = 0$$
+
+or:
+
+\begin{gather*}
+  3a_1 + 2a_2 + 5a_3 = 0\\
+  a_1 - 3a_2 + 9a_3 = 0 \\
+  4a_1 + 5a_2 + ta_3 = 0\\
+\end{gather*}
+
+Subtracting the 3 times the  second equation from the first:
+
+\begin{gather*}
+  11a_2 - 22a_3 = 0\\
+  a_1 - 3a_2 + 9a_3 = 0 \\
+  4a_1 + 5a_2 + ta_3 = 0\\
+\end{gather*}
+
+\vspace{3mm}
+
+\noindent\textbf{(5a)} a. If $(1 + i, 1 - i)$ is linearly indepedent assuming $a_1,a_2 \in \mathbb{R}$, then the only solution to $a_1(1+i) + a_2(1-i) = 0$ or
+\begin{gather*}
+  a_1 + a_2 = 0 \\
+  a_1 - a_2 = 0 \\
+\end{gather*}
+
+\noindent is if $a_1 = a_2 = 0$. Solving this system we see that $a_1 = -a_2$, and $a_1 = a_2$ The only number this is true of  is 0, therefore $(1 + i, 1 - i)$ is linearly independent.
+
+\vspace{3mm}
+
+\noindent b. If $(1+i, 1-i)$ are linearly dependent assuming $a_1,a_2 \in \mathbb{C}$ There must be $a_1, a_2$ not both 0 such that $a_1(1+i) + a_2(1-i) = 0$. Letting $a_1 = i$ and $a_2 = 1$ we see that $i(1+i) + 1(1 - i) = (-1 + i) + (1 - i) = 0$. So $(1+i, 1-i)$ is linearly dependent.
+
+\vspace{3mm}
+
+\noindent\textbf{(8a)} We must show that $a_1 = a_2 = ... = a_m = 0$ is the only way that $a_1 (\lambda v_1) + a_2 (\lambda v_2) + ... + a_m (\lambda v_m) = 0$ where $\lambda \neq 0$ and $\lambda \in \mathbb{F}$. Factoring the $\lambda$ we have $a_1 \lambda (v_1) + a_2 \lambda (v_2) + ... + a_m \lambda (v_m) = 0$ Since $v_1, v_2, ... v_m$ are linearly indepedent we have that $a_1 \lambda = a_2 \lambda = ... =a_m \lambda = 0$, but by assumption $\lambda \neq 0$ which means that $a_1 = a_2 = ... = a_m = 0$, and therefore $\lambda v_1, \lambda v_2, ... \lambda v_m$ are linearly independent.
+
+
+
+\end{document}

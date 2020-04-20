@@ -1,0 +1,189 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Linear Algebra Hw1}
+\author{Toby Harvey}
+\maketitle
+
+\noindent(1a)
+
+\begin{gather*}
+  \left(\frac{-1 + \sqrt{3}i}{2}\right)^3 = \left(-\frac{1}{2} + \frac{\sqrt{3}i}{2}\right)\left(-\frac{1}{2} + \frac{\sqrt{3}i}{2}\right)\left(-\frac{1}{2} + \frac{\sqrt{3}i}{2}\right) = \left(\frac{1}{4} - \frac{3}{4} - \frac{\sqrt{3}i}{2}\right)\left(-\frac{1}{2} + \frac{\sqrt{3}i}{2}\right)\\
+  =  \left(-\frac{1}{2} - \frac{\sqrt{3}i}{2}\right)\left(-\frac{1}{2} + \frac{\sqrt{3}i}{2}\right) = \frac{1}{4} + \frac{3}{4} = 1
+\end{gather*}
+
+\vspace{3mm}
+
+\noindent(2a)
+
+\vspace{3mm}
+
+\noindent Let $\alpha, \beta \in \mathbb{C}$ so that $\alpha = a + bi$, $\beta = c+di$. If $\alpha\beta = 1$,
+then by the definition of multiplication in $\mathbb{C}$ we have:
+
+
+$$(ac - bd) + (ad + bc)i = 1 + 0i \implies ac - bd = 1 \text{ and } ad + bc = 0$$
+
+\noindent This is a linear system of two equations in $c$ and $d$. Eliminating the first term in each equation we get:
+
+$$(-abc + b^2d = -b) + (abc + a^2d = 0) \implies b^2d + a^2d = -b \implies d = - \frac{b}{b^2 + a^2}$$
+
+\noindent pluggin this back to $ad + bc = 0$ we get:
+
+$$a\left(\frac{-b}{b^2 + a^2}\right) + bc = 0 \implies c = \frac{a}{b^2 + a^2}$$
+
+\noindent Therefore the multplicative identity in $\mathbb{C}$ is $\frac{a}{b^2 + a^2} - \frac{b}{b^2 + a^2}i$
+
+\newpage
+
+\noindent(11a)
+
+\vspace{3mm}
+
+\noindent By way of contradiction, assume there exists $\lambda \in \mathbb{C}, \lambda = a +bi$ so that:
+
+\begin{gather*}
+  \lambda(2 - 3i) = 12 - 5i\\
+  \lambda(5 + 4i) = 7 + 22i\\
+  \lambda(-6 + 7i) = -32 - 9i\\
+\end{gather*}
+
+\noindent expanding this out:
+
+\begin{gather*}
+  2a + 3b + (-3a + 2b)i = 12 - 5i\\
+  5a - 4b + (4a + 5b)i= 7 + 22i\\
+  -6a - 7b + (7a - 6b)i = -32 - 9i\\
+\end{gather*}
+
+\noindent or:
+
+\begin{gather*}
+  2a + 3b = 12\\
+  -3a + 2b = -5\\
+   5a - 4b = 7\\
+  4a + 5b = 22\\
+  -6a - 7b = -32\\
+  7a - 6b = -9\\
+\end{gather*}
+
+This is a system of 6 equations with 2 unknowns so it is very over determined. We can see it has no solution if we find the a solution to only the first two equations:
+
+$$\left(\frac{3}{2}(2a + 3b) = \frac{3}{2}(12)\right) + (-3a + 2b = -5) \implies \frac{13}{2}b = 13 \implies b = 2 $$
+
+so that $-3a + 4 = -5 \implies a = 3$
+
+Plugging these into the sixth equation we get:
+
+$$7(3) - 6(2) = -9 \implies 9 = -9$$
+
+Which is a contradiction.
+
+\newpage
+
+\noindent(16a)
+
+\begin{gather*}
+  (a+b)x =\\
+  ((a+b)x_1,(a+b)x_2,...,(a+b)x_n) =\\
+  (ax_1 + bx_1, ax_2 + bx_2,...,ax_n + bx_n) =\\
+  (ax_1, ax_2,...ax_n) + bx_1,bx_2,...bx_n) =\\
+  a (x_1, x_2,...,x_n) + b(x_1, x_2,...,x_n) =
+  ax+bx
+\end{gather*}
+
+\vspace{3mm}
+
+\noindent(4b)
+
+\vspace{3mm}
+
+\noindent There are no elements in the empty set so the there is no existence of the additive identity.
+
+\vspace{3mm}
+
+\noindent(5b)
+
+\vspace{3mm}
+
+We need to show that the condition $0\vec{v} = \vec{0}$ implies that there exists $\vec{w} = -\vec{v}$ such that $\vec{v} + (-\vec{v}) = 0$:
+
+$$\vec{0} = 0\vec{v} = (1 + (-1))\vec{v} = 1\vec{v} + (-1)\vec{v} = \vec{v} + (-\vec{v})$$
+
+Where in the last equality we have let $-1\vec{v} = (-\vec{v}) =  \vec{w}$.
+
+\vspace{3mm}
+
+\noindent(1c)
+
+\vspace{3mm}
+
+\noindent(a) First the additive identity is in this subspace because $0 + 2(0) = 3(0) \implies 0 = 0$.
+
+\vspace{1mm}
+\noindent Addition is closed: Let $W$ denote the subspace in question. Let $x = (x_1, x_2, x_3) \in W$, and $ y = (y_1, y_2, y_3) \in W$. We need to show $x+y$ is still in the subspace:
+
+$$(x_1 + y_1) + 2(x_2 + y_2) + 3(x_3 + y_3) = (x_1 + 2x_2 + 3x_3) + (y_1 + 2y_1 + 3x_3) = 0 + 0 = 0$$
+
+\noindent Multiplication is closed: Let $a\in\mathbb{F}$. We must show that $ax \in W$:
+
+$$ax_1 + 2ax_2 + 3ax_3 = a(x_1 + 2x_2 + 3x_3) = a(0) = 0$$
+
+\noindent So this is a subspace.
+
+\vspace{6mm}
+
+\noindent(b) This is not a subspace of $\mathbb{F}^3$ because it does not contain the additive identity of $\mathbb{F}^3$, $\vec{0}$.
+
+\vspace{3mm}
+
+\noindent(c) This is not a subspace. Example of it not being closed under addition:
+
+$$(1,0,0) , (0, 1, 1) \in W \qquad (1, 0, 0) + (0, 1, 1) = (1, 1, 1)$$
+
+$$1(1)(1) = 1 \implies (1,1,1) \notin W$$
+
+
+\newpage
+
+\noindent(d) $W$ does contain the addative identity since $0 = 5(0) \implies 0 = 0$.
+
+Addition is closed:
+$$(x_1 + y_1) - 5(x_2 + y_2) = (x_1 - 5x_2) + (y_1 - 5y_2) = 0 + 0 = 0$$
+Multiplication is closed:
+$$ax_1 - 5ax_3 = a(x_1 - 5x_3) = a(0) = 0$$
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
