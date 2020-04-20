@@ -1,0 +1,140 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include "lcgrand.h"
+#include <float.h>
+#include "tandum_queue.h"
+
+#define Q_LIMIT 100
+#define BUSY 1
+#define FREE 1
+
+int num_s;
+
+
+int main()
+{
+
+  FILE *fin, *fout;
+
+  /*Model input parameters */
+
+  float T, arrival_mean;
+  int i;
+  
+  fin = fopen("tandum_queue.in", "r");
+  fout = fopen("tandum_queue.out", "w");
+  fscanf(fin, "%d %f\n", &num_s, &T);
+
+  float serv_mean[num_s];
+  
+  fscanf(fin, "%f %f", &arrival_mean, &serv_mean[0]);
+  for (i = 0 ; i < num_s - 1 ; i++)
+    fscanf(fin, "\n%f", &serv_mean[i + 1]);
+    
+  fprintf(fout, "System of %d servers in tandem running %.2f minutes\n\n",
+	  num_s, T);
+  fprintf(fout, "Mean arrival time: %.2f\n", arrival_mean);
+  for (i = 0 ; i < num_s ; i++)
+    fprintf(fout, "Mean service time of server %d: %.2f\n",
+	    i+1, serv_mean[i]);
+
+  
+  /* program data */
+
+  int ss[num_s],
+    in_q[num_s],
+    next_event_type;
+  
+  float
+    t,
+    next_events[num_s][2];
+
+  float (*q_arrive_t)[num_s][Q_LIMIT] = malloc(sizeof(*q_arrive_t));
+  
+  /* statistical data */
+  int total_thru[num_s];
+
+  float total_delay[num_s],
+    in_q_total[num_s],
+    serv_time_total[num_s];
+  
+  
+  init_prog(ss, in_q, t, next_events, arrival_mean);
+
+  
+  init_stats(total_thru, total_delay,
+	     in_q_total,
+	     serv_time_total);
+  
+  
+  start simulating and stop when end time is reached 
+  while ( t < T )
+    {
+
+      update_t_and_e(t, next_events);
+      
+
+
+    }
+  
+  
+  
+  fclose(fin);
+  fclose(fout);
+  free(q_arrive_t);
+  
+}  
+
+
+void init_prog(int ss[], int in_q[], float t,
+	       float next_events[][2], float arrival_mean)
+{
+
+  int i;
+
+  for(i = 0 ; i < num_s ; i++)
+    {
+      /* all servers start free */
+      ss[i] = FREE;
+      /* no one is in any queues yet */
+      in_q = 0;
+      /* force any departure to be impossible on first step */
+      next_events[i][1] = FLT_MAX;
+      /* force any arrivals to be impossible not at the first server */
+      if (i != 0)
+	next_events[i][0] = FLT_MAX;
+    }
+  
+  t = 0.0;
+  next_events[0][0] = t + expon(arrival_mean);
+  
+}
+
+void init_stats(int total_thru[], float total_delay[],
+		float in_q_total[],
+		float serv_time_total[])
+{
+
+  int i;
+  
+  for (i = 0 ; i < num_s ; i++)
+    {
+      total_thru[i] = 0;
+      total_delay[i] = 0.0;
+      in_q_total[i] = 0.0;
+      serv_time_total[i] = 0.0;
+    }
+  
+}
+
+void update_t_and_e(float t, float next_events[][2])
+{
+
+
+}
+
+
+
+
+float expon(float mean){return -mean * log(lcgrand(1));}

@@ -1,0 +1,8 @@
+
+void init_prog(int ss[], int in_q[], float t, float next_events[][2], float arrival_mean);
+
+void init_stats(int total_thru[], float total_delay[], float in_q_total[], float serv_time_total[]);
+
+void update_t_and_e(float t, float next_events[][2]);
+
+float expon(float mean);

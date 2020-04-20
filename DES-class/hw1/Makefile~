@@ -1,0 +1,20 @@
+mm1: mm1.o lcgrand.o lcgrand.h
+	g++ -g -o mm1 mm1.o lcgrand.o
+
+hw1: hw1.o lcgrand.o lcgrand.h
+	g++ -g -o hw1 hw1.o lcgrand.o
+
+
+mm1.o: mm1.c lcgrand.h
+	g++ -g -c mm1.c
+
+hw1.o: hw1.c lcgrand.h
+	g++ -g -c hw1.c
+
+
+lcgrand.o: lcgrand.c lcgrand.h
+	g++ -g -c lcgrand.c
+
+
+clean:
+	rm *.o
