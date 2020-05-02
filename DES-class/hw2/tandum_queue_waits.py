@@ -21,6 +21,7 @@ class Queue:
         self.tw_queue = 0.0
         self.serv_time = 0.0
         self.total_transit = 0.0
+        self.max_transit = 0
 
     def __str__(self):
 
@@ -40,6 +41,9 @@ class Queue:
         self.tw_queue += len(self.q_arrival_t) * t_period
         self.total_transit += self.num_transit * t_period
         self.serv_time += int(self.busy) * t_period
+        
+        if self.num_transit > self.max_transit:
+            self.max_transit = self.num_transit
         
         
 class Event:
@@ -73,10 +77,15 @@ class Event_List:
 
         if type_e == 0 and queue_num == 0:
             self.total_arrivals += 1
-        
-        
-        self.event_list.append(Event(t, queue_num, type_e))
-        self.event_list.sort(key = lambda event: event.t)
+
+        index = 0
+        if len(self.event_list) != 0:
+            for i in range(len(self.event_list)):
+                if self.event_list[i].t < t:
+                    index = i+1
+            self.event_list.insert(index, Event(t, queue_num, type_e))
+        else:
+             self.event_list.append(Event(t, queue_num, type_e))
         
 
     def peek_next(self):
@@ -187,7 +196,14 @@ def write_stats(queues, fout, t):
         avg_transit = queue.total_transit/t
         fout.write(str(avg_transit) + "\t\t")
     fout.write("\n\n")
-
+    
+    fout.write("\n\nMaximum Number in Transit to:\n\n")
+    for i in range(len(queues)):
+        fout.write("Queue %d\t\t" % i)
+    fout.write("\n\n")
+    for queue in queues:
+        fout.write(str(queue.max_transit) + "\t\t")
+    fout.write("\n\n")
 
     
         
@@ -245,7 +261,8 @@ def main():
             
             if current_event.type_e == 1:
                 departure(t, queues[current_event.queue_num], queues, current_event, events)
-            
+
+            print(events)
             t_prev = t
 
         write_stats(queues, fout, t)

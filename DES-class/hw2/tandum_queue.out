@@ -11,7 +11,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.686136653281779		5.965121232311497		
+0.919090503745518		3.8917612289269736		
 
 
 
@@ -19,7 +19,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.6551765672204999		5.843666497833807		
+0.933351090645382		3.9160243112967965		
 
 
 
@@ -27,7 +27,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.6826071210753631		0.88650268344646		
+0.6924274609658407		0.8618909411343422		
 
 
 
@@ -35,7 +35,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9885071560648085		
+0.0		0.9971654081006421		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		5		
 
 
 Repatition number 1
@@ -44,7 +52,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.3914515885402416		9.86128957182109		
+1.4352404020505076		11.170803139537831		
 
 
 
@@ -52,7 +60,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.4441806953779122		10.205402609501766		
+1.4560919057736244		11.245576697339919		
 
 
 
@@ -60,7 +68,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.6744433608413674		0.9332875325593923		
+0.6712471147135899		0.9672739549912415		
 
 
 
@@ -68,7 +76,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9997650654554062		
+0.0		0.9918595839992188		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		7		
 
 
 Repatition number 2
@@ -77,7 +93,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.8056036864875085		7.3127965805441235		
+1.5557342740639688		5.478870240763812		
 
 
 
@@ -85,7 +101,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.9600971397959503		7.560679769404559		
+1.6148007560777573		5.681407525556133		
 
 
 
@@ -93,7 +109,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7387512842264724		0.9407762284546998		
+0.7116914258003398		0.8989161092617354		
 
 
 
@@ -101,7 +117,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		1.0268517631476297		
+0.0		1.0354352275232863		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		7		
 
 
 Repatition number 3
@@ -110,7 +134,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.4779408860957808		11.174895291449053		
+2.0845758760578894		4.340198810042103		
 
 
 
@@ -118,7 +142,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.5098971200276174		11.36565575375319		
+2.0574172291538235		4.260724868478183		
 
 
 
@@ -126,7 +150,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7069149482947024		0.9253355078741736		
+0.6873923846683131		0.8630955482098632		
 
 
 
@@ -134,7 +158,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		1.0082101603537421		
+0.0		1.001037811985718		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 4
@@ -143,7 +175,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-2.287673674657324		9.334275666467727		
+1.6965977430488204		9.623947551115739		
 
 
 
@@ -151,7 +183,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-2.2529646844171394		9.152061935966504		
+1.786430077868428		10.119001200528652		
 
 
 
@@ -159,7 +191,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7532471382586442		0.9158527167841574		
+0.7151017717340061		0.9442521497016036		
 
 
 
@@ -167,7 +199,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9955365074315395		
+0.0		1.0549410383076632		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 5
@@ -176,7 +216,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.1923257634526554		2.9291607395735264		
+2.6306950715863473		11.394529888773912		
 
 
 
@@ -184,7 +224,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.1194995919022046		2.7366048059611745		
+2.8088109872076346		12.135177865655		
 
 
 
@@ -192,7 +232,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.6364457347308905		0.8051489590175445		
+0.7572444413364784		0.9700375291163538		
 
 
 
@@ -200,7 +240,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9292148245526364		
+0.0		1.0605319461201064		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 6
@@ -209,7 +257,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-2.2646937900872053		6.350879444013452		
+1.585942172533854		6.361803899181539		
 
 
 
@@ -217,7 +265,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-2.1917126289818114		6.130509845146277		
+1.53924982415392		6.152941018244397		
 
 
 
@@ -225,7 +273,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7209952853363015		0.9123517702702176		
+0.6987355805745182		0.8943934244998196		
 
 
 
@@ -233,7 +281,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9743314626012747		
+0.0		0.9542976976205044		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 7
@@ -242,7 +298,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.699218249329339		3.987349164021556		
+1.9339695742917362		7.3523521929261815		
 
 
 
@@ -250,7 +306,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.6947071982068906		3.967222888973299		
+1.97551899935397		7.341863056372861		
 
 
 
@@ -258,7 +314,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7323988820293301		0.8580692609136105		
+0.7060991296001053		0.924041601803264		
 
 
 
@@ -266,7 +322,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		1.0116152886489882		
+0.0		0.9861587733629922		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 8
@@ -275,7 +339,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-2.7395721437588714		8.107445762858832		
+1.302197908495847		15.511633112174184		
 
 
 
@@ -283,7 +347,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-2.802250192377171		8.268614717321876		
+1.325549871456056		15.759279205903127		
 
 
 
@@ -291,7 +355,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7624128463006881		0.9089137271187852		
+0.672165208536041		0.9557701390478714		
 
 
 
@@ -299,7 +363,15 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		1.0339807749201926		
+0.0		1.0000859507398376		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
 
 Repatition number 9
@@ -308,7 +380,7 @@ Average delay in queues:
 
 Queue 0		Queue 1		
 
-1.48929958817694		4.609613368790551		
+1.3844221104991323		7.387138518897058		
 
 
 
@@ -316,7 +388,7 @@ Average number in queues:
 
 Queue 0		Queue 1		
 
-1.4276915507229642		4.39754980116411		
+1.3298263572215534		7.068457462468833		
 
 
 
@@ -324,7 +396,7 @@ Server utilization:
 
 Queue 0		Queue 1		
 
-0.7048866530425865		0.8768348519884299		
+0.6701121164305994		0.8537356992597084		
 
 
 
@@ -332,5 +404,13 @@ Average Number in Transit to :
 
 Queue 0		Queue 1		
 
-0.0		0.9509791456738901		
+0.0		0.9411915428841297		
+
+
+
+Maximum Number in Transit to:
+
+Queue 0		Queue 1		
+
+0		6		
 
