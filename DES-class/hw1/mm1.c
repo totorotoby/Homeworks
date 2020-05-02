@@ -39,7 +39,7 @@ int main()  /* Main function. */
     /* Read input parameters. */
 
     fscanf(infile, "%f %f %d", &mean_interarrival, &mean_service,
-           &num_delays_reuired);
+           &num_delays_required);
 
     /* Write report heading and input parameters. */
 
@@ -84,6 +84,7 @@ int main()  /* Main function. */
       
       report();
     }
+    printf("Total thru: %d\n total delays: %f\n", num_custs_delayed, total_of_delays);
     fclose(infile);
     fclose(outfile);
 
@@ -252,10 +253,13 @@ void report(void)  /* Report generator function. */
 
     fprintf(outfile, "\n\nAverage delay in queue%11.3f minutes\n\n",
             total_of_delays / num_custs_delayed);
+    printf("Total delays: %f\n", total_of_delays);
+    printf("number of cust %d\n", num_custs_delayed);
     fprintf(outfile, "Average number in queue%10.3f\n\n",
             area_num_in_q / sim_time);
     fprintf(outfile, "Server utilization%15.3f\n\n",
             area_server_status / sim_time);
+    printf("serv status total: %f\n", area_server_status);
     fprintf(outfile, "Time simulation ended%12.3f minutes", sim_time);
 }
 

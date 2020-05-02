@@ -17,7 +17,7 @@ int main()
   int i;
   
   fin = fopen("tandum_queue.in", "r");
-  fout = fopen("tandum_queue.out", "w");
+  fout = fopen("tandum_queue_problem_3-1.out", "w");
   fscanf(fin, "%d %f\n", &num_s, &T);
 
   float serv_mean[num_s];
@@ -28,10 +28,7 @@ int main()
     
   fprintf(fout, "System of %d servers in tandem running %.2f minutes\n\n",
 	  num_s, T);
-  fprintf(fout, "Mean arrival time: %.2f\n", arrival_mean);
-  for (i = 0 ; i < num_s ; i++)
-    fprintf(fout, "Mean service time of server %d: %.2f\n",
-	    i+1, serv_mean[i]);
+
   
   /* program data */
   
@@ -59,52 +56,92 @@ int main()
   float total_delay[num_s],
     in_q_total[num_s],
     serv_time_total[num_s];
-  
-  
-  init_prog(ss, in_q, &t, &t_prev, next_events, arrival_mean);
+
+  // repatitions loop
+  for (int j = 0 ; j < 10 ; j++)
+    {
+      
+      init_prog(ss, in_q, &t, &t_prev, next_events, arrival_mean);
 
   
-  init_stats(total_thru, total_delay,
-	     in_q_total,
-	     serv_time_total);
+      init_stats(total_thru, total_delay,
+		 in_q_total,
+		 serv_time_total);
+      
+      fprintf(fout, "\n\n Repatition #%d\n\n", j+1);
+      fprintf(fout, "Mean arrival time: %.2f\n\n", arrival_mean);
+      for (i = 0 ; i < num_s ; i++)
+	fprintf(fout, "Mean service time of server %d: %.2f\n\n",
+		i+1, serv_mean[i]);
+      
   
-  
-  /*start simulating and stop when end time is reached*/
-  while ( t < T )
-    {
+      
+      /*start simulating and stop when end time is reached*/
+      while ( t < T )
+	{
 
       
-      update_t_and_e(&t, next_events, &next_event_type, &neq);
+	  update_t_and_e(&t, next_events, &next_event_type, &neq);
 
-      update_stats(t, &t_prev, &ss[neq],
-		   &in_q[neq],
-		   &in_q_total[neq],
-		   &serv_time_total[neq]);
+	  update_stats(neq, t, &t_prev, ss,
+		       in_q,
+		       in_q_total,
+		       serv_time_total);
 
-      /*print whats happening */
-      printf("\n------------------------------------\n");
-      printf("Current Time: %f\n", t);
-      if (next_event_type == 0){
-	printf("customer is about to arrive at queue %d\n", neq);
-      }
-      if (next_event_type == 1){
-	printf("customer is about to depart from queue %d\n", neq);
-      }
+      
+	  /*print whats happening */
+	  //************************************************************
+      
+	  printf("\n*********************************************************\n");
+	  printf("Current Time: %f\n", t);
+	  printf("Current Action:\n");
+	  if (next_event_type == 0){
+	    printf("customer is about to arrive at queue %d\n\n", neq);
+	  }
+	  if (next_event_type == 1){
+	    printf("customer is about to depart from queue %d\n\n", neq);
+	  }
+	  
+	  printf("Next Events Scheduled:\n\n");
+	  print_next_events(next_events, num_s);
+	  printf("\n");
+	  printf("Number of people currently in queues:\n");
+	  print_queue_stat_i(in_q, num_s);
+	  printf("Number of people total through queues:\n");
+	  print_queue_stat_i(total_thru, num_s);
+	  printf("The Total delay in each queue:\n");
+	  print_queue_stat_f(total_delay, num_s);
+	  printf("The Total time server is busy:\n");
+	  print_queue_stat_f(serv_time_total, num_s);
+	  printf("The Total in queue integrate by time:\n");
+	  print_queue_stat_f(in_q_total, num_s);
+      
+      //**************************************************************************
 
-       
-      if (next_event_type == 0){
-	  arrive(neq, next_events, ss, in_q,
-		 total_delay, total_thru,
-		 q_arrive_t, arrival_mean, serv_mean, t);
-      }
 
-      if (next_event_type == 1){
-	printf("in queue array: %d %d\n", in_q[0], in_q[1]);
-      depart(neq, in_q, ss,
-	     next_events, q_arrive_t,
-	     total_delay, total_thru,
-	     serv_mean, t);
-      }
+      
+	  if (next_event_type == 0){
+	    arrive(neq, next_events, ss, in_q,
+		   total_delay, total_thru,
+		   q_arrive_t, arrival_mean, serv_mean, t, fout);
+	  }
+
+	  if (next_event_type == 1){
+	
+	    depart(neq, in_q, ss,
+		   next_events, q_arrive_t,
+		   total_delay, total_thru,
+		   serv_mean, t);
+	  }
+	}
+
+      write_stats(fout, num_s, t, total_delay, total_thru,
+		  in_q_total, serv_time_total);
+
+      //problem three decreasing
+      //arrival_mean =arrival_mean - .0575;
+      //serv_mean[0] = serv_mean[0] - .0275;
+      
     }
   
   fclose(fin);
@@ -156,9 +193,6 @@ void update_t_and_e(float *t, float next_events[][2],
   int i;
   int j;
   float minimum = FLT_MAX;
-
-  printMatrix_2(next_events, num_s);
-
   
   for (i = 0 ; i < num_s ; i ++)
     {
@@ -177,25 +211,24 @@ void update_t_and_e(float *t, float next_events[][2],
   
 }
 
-void update_stats(float t, float *t_prev, int* ss , int *in_q,
-		  float *in_q_total, float *serv_time_total)
+void update_stats(int neq, float t, float *t_prev, int ss[] , int in_q[],
+		  float in_q_total[], float serv_time_total[])
 {
-  int time_interval;
+  float time_interval;
 
   time_interval = t - (*t_prev);
   /* update for the next time step */
   *t_prev = t;
 
-  
-  *serv_time_total += (*ss) * time_interval;
-  *in_q_total += (*in_q) * time_interval;
+  serv_time_total[neq] += ss[neq] * time_interval;
+  in_q_total[neq] += in_q[neq] * time_interval;
  
 }
 
 void arrive(int neq,float next_events[][2],
 	    int ss[], int in_q[], float total_delay[],
 	    int total_thru[],float **q_arrive_t,
-	    float arrival_mean, float serv_mean[], float t)
+	    float arrival_mean, float serv_mean[], float t, FILE *fout)
 {
 
 
@@ -209,16 +242,15 @@ void arrive(int neq,float next_events[][2],
   
 
   /* if someone is already being served need to join the queue */
-  printf("sever status: %d\n", ss[neq]);
   if (ss[neq] == BUSY)
     {
       in_q[neq]++;
       if (in_q[neq] > Q_LIMIT)
 	{
-	  printf("Overflow in queue 0 at time %f\n", t);
+	  fprintf(fout, "Overflow in queue 0 at time %f\n", t);
 	  exit(2);
 	}
-      printf("number currently in queue: %d\n", in_q[neq]);
+      
       q_arrive_t[neq][in_q[neq]] = t;
     }
 
@@ -253,15 +285,15 @@ void depart(int neq, int in_q[], int ss[],
 
   /* case where someone is departing and we need to schedule a new person in */
   else
-    {
-      /* There is one less in the queue now because we took a new person */
-      fprintf(stderr, "number of people in queue: %d\n", in_q[neq]);
-      in_q[neq]--;
+    { 
       /* compute the delay of the new person */
-      fprintf(stderr, "number of people in queue: %d\n", in_q[neq]);
-      fprintf(stderr, "queue number: %d\n", neq);
       delay = t - q_arrive_t[neq][in_q[neq]];
+      /*printf("Time is: %f    arrival time is: %f    delay is: %f\n",
+	t, q_arrive_t[neq][in_q[neq]], delay);*/
       total_delay[neq] += delay;
+     
+      /* There is one less in the queue now because we took a new person */
+      in_q[neq]--;
       /* increment total peopel thru */
       total_thru[neq]++;
 
@@ -271,10 +303,9 @@ void depart(int neq, int in_q[], int ss[],
       
       /* queue needs to be moved up */
       for (i = 1 ; i <= in_q[neq] ; i++)
-	printf("Howdy!\n");
 	q_arrive_t[neq][i] = q_arrive_t[neq][i+1];
     }
-
+  
   /* if this is not the last queue then we need to move the customer to the next
      queue in the  line */
   if (neq != (num_s - 1))
@@ -283,8 +314,50 @@ void depart(int neq, int in_q[], int ss[],
 	 right now */    
       next_events[neq+1][0] = t;
     }
-  
 }
+
+void write_stats(FILE *fout, int num_s, float t,
+		 float total_delay[], int total_thru[], float in_q_total[],
+		 float serv_time_total[])
+{
+
+  int i;
+  
+  fprintf(fout, "\n\nAverage delay in queues:\n\n");
+  for (i = 0 ; i < num_s ; i++)
+    fprintf(fout, "Queue %d\t\t", i);
+  fprintf(fout, "\n\n");
+  //for (i = 0 ; i < num_s*15 ;i++)
+    //fprintf(fout, "-");
+  fprintf(fout, "\n\n");
+  for (i = 0 ; i < num_s ; i++)
+    fprintf(fout, "%2.5f\t\t" , total_delay[i]/total_thru[i]);
+  fprintf(fout, "\n\n");
+     fprintf(fout, "\n\nAverage number in queues:\n\n");
+  for (i = 0 ; i < num_s ; i++)
+     fprintf(fout, "Queue %d\t\t", i);
+   fprintf(fout, "\n\n");
+   //for (i = 0 ; i < num_s*15 ;i++)
+    // fprintf(fout, "-");
+   fprintf(fout, "\n\n");
+  for (i = 0 ; i < num_s ; i++)
+     fprintf(fout, "%2.5f\t\t" , in_q_total[i]/t);
+   fprintf(fout, "\n\n");
+    fprintf(fout, "\n\nServer utilization:\n\n");
+  for (i = 0 ; i < num_s ; i++)
+     fprintf(fout, "Queue %d\t\t", i);
+   fprintf(fout, "\n\n");
+   //for (i = 0 ; i < num_s*15 ;i++)
+    //     fprintf(fout, "-");
+   fprintf(fout, "\n\n");
+  for (i = 0 ; i < num_s ; i++)
+     fprintf(fout, "%2.5f\t\t" , serv_time_total[i]/t);
+   fprintf(fout, "\n\n");
+    
+
+}
+
+
 
 
 void printMatrix(float **m, int height, int length){
@@ -292,20 +365,65 @@ void printMatrix(float **m, int height, int length){
   for (int i = 0 ; i < height ; i++){
     //printf("\n");
     for (int j = 0 ; j < length ; j++){
-      printf("%.2f,", m[i][j]);
+      printf("%2.2e,", m[i][j]);
     }
     printf("\n");
   }
 }
 
-void printMatrix_2(float m[][2], int height){
+void print_next_events(float m[][2], int num_s){
 
-  for (int i = 0 ; i < height ; i++){
+  for (int i = 0 ; i < num_s ; i++){
     for (int j = 0 ; j < 2; j++){
-      printf("%.2f,", m[i][j]);
+      if (j == 0 && m[i][j] != FLT_MAX)
+	printf("Next arrival at queue %d is at %2.2f\n", i, m[i][j]);
+      if (j == 0 && m[i][j] == FLT_MAX)
+	printf("Next arrival at queue %d is not scheduled\n", i);
+      if (j == 1 && m[i][j] != FLT_MAX)
+	printf("Next departure at queue %d is at %2.2f\n", i, m[i][j]);
+      if (j == 1 && m[i][j] == FLT_MAX)
+	printf("Next departure at queue %d is not scheduled\n", i);
+	
     }
     printf("\n");
   }
 }
+
+void print_queue_stat_i(int stat[], int num_s)
+{
+
+  int i;
+  
+  for (i = 0 ; i < num_s ; i++)
+    printf("Queue %d\t\t", i);
+  printf("\n");
+  for (i = 0 ; i < num_s*15 ;i++)
+    printf("-");
+  printf("\n");
+  for (i = 0 ; i < num_s ; i++)
+    printf("%d\t\t" , stat[i]);
+  printf("\n");
+
+}
+
+void print_queue_stat_f(float stat[], int num_s)
+{
+
+  int i;
+  
+  for (i = 0 ; i < num_s ; i++)
+    printf("Queue %d\t\t", i);
+  printf("\n");
+  for (i = 0 ; i < num_s*15 ;i++)
+    printf("-");
+  printf("\n");
+  for (i = 0 ; i < num_s ; i++)
+    printf("%2.2f\t\t" , stat[i]);
+  printf("\n");
+
+}
+
+
+
 
 float expon(float mean){return -mean * log(lcgrand(1));}

@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Modeling and Sim Hw2}
+\author{Toby Harvey}
+\maketitle
+
+Notes about program:
+
+The program can be run with: Python3 tandum\_queue\_waits.py
+
+The only depedence it is has is numpy to generate expoential and uniform samples
+
+numpy can be installed with the python3 package manager pip3 (assuming you are familiar with it).
+
+\vspace{3mm}
+
+1.1 output can be found at the bottom or in tandum\_queue.out
+
+(1.2) The event list I believe can be implemented as either a length 2 or a length 3 array for the case with travel times. We can treat the travel times as seperate event somehow keep track of them. I elected not to this as it seems as though we can get by with only a lenght 2 list. Instead of designating a whole new event, one can just schedule an arrival a the next queue with an offset of time drawn from the uniform(0,2), and then increment the number of people in transit. Similarly we will have to deciment the number of people in transit when an arrivel happens. See lines la and la in code.
+
+
+\end{document}

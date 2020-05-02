@@ -2,7 +2,7 @@ Single-server queueing system
 
 Mean interarrival time      1.000 minutes
 
-Mean service time           0.500 minutes
+Mean service time           0.700 minutes
 
 Number of customers          1000
 
@@ -12,118 +12,118 @@ Simulation number: 1
 
 
 
-Average delay in queue      0.430 minutes
+Average delay in queue      1.602 minutes
 
-Average number in queue     0.418
+Average number in queue     1.593
 
-Server utilization          0.460
+Server utilization          0.674
 
-Time simulation ended    1027.915 minutes
+Time simulation ended    1005.659 minutes
 
 Simulation number: 2
 
 
 
-Average delay in queue      0.437 minutes
+Average delay in queue      1.485 minutes
 
-Average number in queue     0.438
+Average number in queue     1.521
 
-Server utilization          0.489
+Server utilization          0.714
 
-Time simulation ended     997.530 minutes
+Time simulation ended     976.038 minutes
 
 Simulation number: 3
 
 
 
-Average delay in queue      0.493 minutes
+Average delay in queue      1.826 minutes
 
-Average number in queue     0.506
+Average number in queue     1.884
 
-Server utilization          0.508
+Server utilization          0.720
 
-Time simulation ended     975.401 minutes
+Time simulation ended     969.060 minutes
 
 Simulation number: 4
 
 
 
-Average delay in queue      0.536 minutes
+Average delay in queue      1.429 minutes
 
-Average number in queue     0.538
+Average number in queue     1.441
 
-Server utilization          0.504
+Server utilization          0.714
 
-Time simulation ended     997.672 minutes
+Time simulation ended     992.308 minutes
 
 Simulation number: 5
 
 
 
-Average delay in queue      0.417 minutes
+Average delay in queue      1.213 minutes
 
-Average number in queue     0.412
+Average number in queue     1.201
 
-Server utilization          0.491
+Server utilization          0.690
 
-Time simulation ended    1012.722 minutes
+Time simulation ended    1010.223 minutes
 
 Simulation number: 6
 
 
 
-Average delay in queue      0.411 minutes
+Average delay in queue      1.202 minutes
 
-Average number in queue     0.416
+Average number in queue     1.168
 
-Server utilization          0.504
+Server utilization          0.652
 
-Time simulation ended     990.373 minutes
+Time simulation ended    1029.038 minutes
 
 Simulation number: 7
 
 
 
-Average delay in queue      0.515 minutes
+Average delay in queue      1.614 minutes
 
-Average number in queue     0.520
+Average number in queue     1.652
 
-Server utilization          0.506
+Server utilization          0.728
 
-Time simulation ended     990.209 minutes
+Time simulation ended     976.654 minutes
 
 Simulation number: 8
 
 
 
-Average delay in queue      0.394 minutes
+Average delay in queue      1.111 minutes
 
-Average number in queue     0.378
+Average number in queue     1.087
 
-Server utilization          0.465
+Server utilization          0.659
 
-Time simulation ended    1042.094 minutes
+Time simulation ended    1040.478 minutes
 
 Simulation number: 9
 
 
 
-Average delay in queue      0.436 minutes
+Average delay in queue      1.175 minutes
 
-Average number in queue     0.426
+Average number in queue     1.132
 
-Server utilization          0.487
+Server utilization          0.662
 
-Time simulation ended    1023.938 minutes
+Time simulation ended    1037.636 minutes
 
 Simulation number: 10
 
 
 
-Average delay in queue      0.549 minutes
+Average delay in queue      1.312 minutes
 
-Average number in queue     0.588
+Average number in queue     1.331
 
-Server utilization          0.514
+Server utilization          0.655
 
-Time simulation ended     940.969 minutes
+Time simulation ended     988.505 minutes

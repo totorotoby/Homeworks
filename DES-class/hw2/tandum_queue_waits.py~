@@ -1,0 +1,149 @@
+from numpy.random import exponential
+from numpy import loadtxt
+
+
+class Queue:
+
+    
+    def __init__(self, number, serv_mean, tt_mean):
+
+        self.number = number
+        self.serv_mean = serv_mean
+        self.tt_mean = tt_mean
+        # arrival times in queue
+        self.q_arrival_t = []
+        # current travel times in queue
+        self.travel_times = []
+        self.free = True
+        self.total_thru = 0
+        self.total_delay = 0.0
+        # number of people in queue weighted by time intervals
+        self.tw_queue = 0.0        
+
+    def __str__(self):
+
+        to_print = "__________________\n" +"Queue Number " + str(self.number) + "\n"
+
+        to_print += "Mean Serving Time: " + str(self.serv_mean) + "\n"
+        to_print += "Mean Time to Travel To: " + str(self.tt_mean) + "\n"
+        to_print += "Current Number in Queue: " + str(len(self.q_arrival_t)) + "\n"
+        to_print += "Current Number Traveling to Queue/Server: " + str(len(self.travel_times)) + "\n"
+        to_print += "Servers Current Status: " + str(self.free) + "\n"
+        to_print += "Total Thru Currently: " + str(self.total_thru) + "\n"
+        
+        return to_print
+        
+    def update_stats(self):
+        
+class Event:
+    
+    def __init__(self, t, queue_num, type_e):
+        self.t = t
+        self.queue_num = queue_num
+        self.type_e = type_e
+
+        
+
+class Event_List:
+
+    def __init__(self):
+        self.event_list = []
+
+    def add_event(self, t, queue_num, type_e):
+        self.event_list.append(Event(t, queue_num, type_e))
+        event_list.sort(key = lambda event: event.t)
+        
+
+    def peek_next(self):
+        return self.event_list[0]
+        
+    def pop_next(self):
+        return self.event_list.pop(0)
+
+def expon(mean):
+    return expoential(scale=mean)
+
+def arrive(t, queue, events):
+
+    # if we are at the first queue
+    if queue.number == 0:
+        # schedule the next arrival
+        events.add_event(t + expon(queue.tt_mean), 0, 0)
+
+    # if they have to wait in line
+    if queue.free == False:
+        # add there arrival time
+        queue.q_arrival_t.append(t)
+        
+    # server is free can serv immediatly
+    else:
+        # add them to tru
+        queue.total_thru += 1
+        # change server status to busy
+        queue.free = False
+        # schedule there departure
+        events.add_event(t + expon(queue.serv_mean), queue.num, 1)
+
+
+def departure(t, dep_queue, queues, current_event, events):
+
+    c_num = deq_queue.number
+
+    
+    # if no one is waiting after this depature
+    if len(dep_queue.q_arrive_t) == 0:
+        dep_queue.free = True
+    # if someone is waiting
+    else:
+        # add their delay
+        dep_queue.total_delay += t - dep_queue.q_arrive_t.pop(0)
+        # add them to thru
+        dep_queue.total_thru += 1
+        # schedule there departure
+        events.add_event(t + expon(dep_queue.serv_time), c_num, 1)
+
+    # if this is not the last queue
+    if dep_queue.num != len(queues):
+        # have this customer arrive in next queue after travel time
+        events.add_event(t + expon(queues[c_num+1].tt_mean), c_nu + 1, 0)
+        
+        
+def main():
+
+    lines = loadtxt("tandum_queue.in", delimiter="\t", unpack=False)
+    num_queues = int(lines[0,0])
+    T = lines[0,1]
+    wait_times = lines[1:, :]
+
+    # making the data for each queue
+    queues = []
+    for i in range(num_queues):
+        q = Queue(i, wait_times[i][1], wait_times[i][0])
+        queues.append(q)
+
+    t = 0.0
+    t_prev = 0.0  
+    # making the events list and scheduling first event
+    events = Event_List()
+    events.add_event(t + exponential(scale=queues[0].tt_mean), 0, 0)
+    
+    while t < T:
+
+        current_event = events.pop_next()
+        t = current_event.t
+        t_inter = t - t_prev
+
+        # update ongoing stats
+        for queue in queues:
+            queue.update_stats(t_inter)
+        
+        if current_event.type_e == 0:
+            arrive(t, queues[current_event.queue_num], events)
+        if current_event.type_e == 1:
+            departure(t, queues[current_event.queue_num], queues, current_event, events)
+            
+        t_prev = t
+            
+main()
+        
+    

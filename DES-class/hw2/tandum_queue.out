@@ -1,0 +1,336 @@
+System of 2 servers in tandem running for 1000 minutes
+
+Mean arrival time: 1.0
+Minimum and Maximum transit times: [0.0, 2.0]
+Mean service time of queue 0: 0.7
+Mean service time of queue 1: 0.9
+
+Repatition number 0
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.686136653281779		5.965121232311497		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.6551765672204999		5.843666497833807		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.6826071210753631		0.88650268344646		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9885071560648085		
+
+
+Repatition number 1
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.3914515885402416		9.86128957182109		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.4441806953779122		10.205402609501766		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.6744433608413674		0.9332875325593923		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9997650654554062		
+
+
+Repatition number 2
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.8056036864875085		7.3127965805441235		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.9600971397959503		7.560679769404559		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7387512842264724		0.9407762284546998		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		1.0268517631476297		
+
+
+Repatition number 3
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.4779408860957808		11.174895291449053		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.5098971200276174		11.36565575375319		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7069149482947024		0.9253355078741736		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		1.0082101603537421		
+
+
+Repatition number 4
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+2.287673674657324		9.334275666467727		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+2.2529646844171394		9.152061935966504		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7532471382586442		0.9158527167841574		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9955365074315395		
+
+
+Repatition number 5
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.1923257634526554		2.9291607395735264		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.1194995919022046		2.7366048059611745		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.6364457347308905		0.8051489590175445		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9292148245526364		
+
+
+Repatition number 6
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+2.2646937900872053		6.350879444013452		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+2.1917126289818114		6.130509845146277		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7209952853363015		0.9123517702702176		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9743314626012747		
+
+
+Repatition number 7
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.699218249329339		3.987349164021556		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.6947071982068906		3.967222888973299		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7323988820293301		0.8580692609136105		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		1.0116152886489882		
+
+
+Repatition number 8
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+2.7395721437588714		8.107445762858832		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+2.802250192377171		8.268614717321876		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7624128463006881		0.9089137271187852		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		1.0339807749201926		
+
+
+Repatition number 9
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+1.48929958817694		4.609613368790551		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+1.4276915507229642		4.39754980116411		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+0.7048866530425865		0.8768348519884299		
+
+
+
+Average Number in Transit to :
+
+Queue 0		Queue 1		
+
+0.0		0.9509791456738901		
+

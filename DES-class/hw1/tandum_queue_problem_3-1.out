@@ -1,0 +1,402 @@
+System of 2 servers in tandem running 1000.00 minutes
+
+
+
+ Repatition #1
+
+Mean arrival time: 1.00
+
+Mean service time of server 1: 0.70
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45211		0.79435		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.93165		1.60709		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.48249		0.34030		
+
+
+
+ Repatition #2
+
+Mean arrival time: 0.94
+
+Mean service time of server 1: 0.67
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.44502		0.85674		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.25821		10.30189		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.51616		0.34403		
+
+
+
+ Repatition #3
+
+Mean arrival time: 0.88
+
+Mean service time of server 1: 0.65
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45955		0.85203		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.30149		15.08329		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.54434		0.32738		
+
+
+
+ Repatition #4
+
+Mean arrival time: 0.83
+
+Mean service time of server 1: 0.62
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.43887		0.75582		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+2.19332		27.99343		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.56738		0.31718		
+
+
+
+ Repatition #5
+
+Mean arrival time: 0.77
+
+Mean service time of server 1: 0.59
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45330		0.73172		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+2.00770		36.38109		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.58899		0.29804		
+
+
+
+ Repatition #6
+
+Mean arrival time: 0.71
+
+Mean service time of server 1: 0.56
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.41078		0.73270		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.72747		28.79179		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.57219		0.31349		
+
+
+
+ Repatition #7
+
+Mean arrival time: 0.65
+
+Mean service time of server 1: 0.54
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45908		0.69106		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.97453		46.37239		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.60717		0.27013		
+
+
+
+ Repatition #8
+
+Mean arrival time: 0.60
+
+Mean service time of server 1: 0.51
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.47956		0.59277		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+4.74412		72.42811		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.67666		0.26546		
+
+
+
+ Repatition #9
+
+Mean arrival time: 0.54
+
+Mean service time of server 1: 0.48
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.40870		0.57002		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+4.66802		85.57726		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.68554		0.23739		
+
+
+
+ Repatition #10
+
+Mean arrival time: 0.48
+
+Mean service time of server 1: 0.45
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.43152		0.45394		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+11.49265		98.54865		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.75104		0.21077		
+

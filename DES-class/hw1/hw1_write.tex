@@ -1,0 +1,973 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Modeling and Sim Hw1}
+\author{Toby Harvey}
+\maketitle
+
+\noindent \textbf{Some notes on my program}:
+
+\noindent The input format for the program I wrote called tandum\_queue is the following (put in a file named tandum\_queue.in):
+
+\vspace{3mm}
+
+\noindent[number of queues] [number of minutes to run for]\newline
+[interval time mean] [first service time mean]\newline
+[second service time mean]\newline
+...\newline
+[nth service time mean]\newline
+
+\vspace{3mm}
+
+\noindent The program should support n servers and not just 2.
+
+\vspace{3mm}
+
+\noindent The repatitions loop can be found on line 61 of tandum\_queue.c. The decreasing means for problem 3.1 can be found commented out on lines 142 and 143.
+
+\vspace{3mm}
+
+\noindent To compile the program use make tandum\_queue.
+
+\noindent To compile the book code you can use make mm1.
+
+
+\vspace{5mm}
+
+\textbf{problem 1}
+
+\noindent Output for problem one can be found at the bottom of this pdf, or in mm1.out.
+
+\noindent Here we have 10 independent replications, and we should see varriation between then as we do since we are random sampling for each case.
+
+
+\vspace{5mm}
+
+\textbf{problem 2}
+
+\noindent Output for problem can be found at the bottom of this pdf or in tandum\_queue\_problem\_2,out.
+
+\vspace{5mm}
+
+\textbf{problem 3}
+
+\noindent Output can be found at the bottom or in tandum\_queue\_problem\_3-1,out.
+
+\vspace{3mm}
+
+\noindent My output for the 2 queues in tandum with decreasing interarrival times, and decrease serving time for queue 0, indicates the affect of this is that the second queue becomes more and more crowded while the first queue can still manage more customers, because its serving time is also decreasing. It is worth noting that the average wait time in queue 0 also goes up but not nearly as much as in queue 1.
+
+\vspace{3mm}
+
+\noindent From a programming stand point, the addition of a second queue means that the arrival times for queues past queue 0 are purely determined by the departure time from the last queue. This means that when a customer departs from a queue we must also schedule an arrival at the next queue unless it is the last queue. Secondly almost all data when dealing with multiple queues can be stored in arrays, where the array is indexed by queue number, so that we can have an arbitrary number of queues in tandum.
+
+\newpage
+
+\text{Problem 1 output:}
+
+
+Single-server queueing system
+
+Mean interarrival time      1.000 minutes
+
+Mean service time           0.700 minutes
+
+Number of customers             5
+
+
+
+Simulation number: 1
+
+
+
+Average delay in queue      0.465 minutes
+
+Average number in queue     0.767
+
+Server utilization          0.696
+
+Time simulation ended       4.282 minutes
+
+Simulation number: 2
+
+
+
+Average delay in queue      0.196 minutes
+
+Average number in queue     0.354
+
+Server utilization          0.633
+
+Time simulation ended       2.763 minutes
+
+Simulation number: 3
+
+
+
+Average delay in queue      0.807 minutes
+
+Average number in queue     0.435
+
+Server utilization          0.550
+
+Time simulation ended       9.269 minutes
+
+Simulation number: 4
+
+
+
+Average delay in queue      1.161 minutes
+
+Average number in queue     2.521
+
+Server utilization          0.714
+
+Time simulation ended       6.001 minutes
+
+Simulation number: 5
+
+
+
+Average delay in queue      0.641 minutes
+
+Average number in queue     0.846
+
+Server utilization          0.971
+
+Time simulation ended       3.786 minutes
+
+Simulation number: 6
+
+
+
+Average delay in queue      0.093 minutes
+
+Average number in queue     0.061
+
+Server utilization          0.376
+
+Time simulation ended       7.585 minutes
+
+Simulation number: 7
+
+
+
+Average delay in queue      0.108 minutes
+
+Average number in queue     0.063
+
+Server utilization          0.290
+
+Time simulation ended       8.644 minutes
+
+Simulation number: 8
+
+
+
+Average delay in queue      0.000 minutes
+
+Average number in queue     0.000
+
+Server utilization          0.247
+
+Time simulation ended       8.602 minutes
+
+Simulation number: 9
+
+
+
+Average delay in queue      0.076 minutes
+
+Average number in queue     0.056
+
+Server utilization          0.322
+
+Time simulation ended       6.810 minutes
+
+Simulation number: 10
+
+
+
+Average delay in queue      0.055 minutes
+
+Average number in queue     0.125
+
+Server utilization          0.424
+
+Time simulation ended       2.214 minutes
+
+
+\newpage
+
+\textbf{problem 2 output:}
+
+System of 2 servers in tandem running 1000.00 minutes
+
+Mean arrival time: 1.00
+Mean service time of server 1: 0.70
+Mean service time of server 2: 0.90
+
+
+ Repatition \#1
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.45211		0.79435
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.93165		1.60709
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+0.48249		0.34030		
+
+
+
+ Repatition \#2
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.45524		0.78762
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 1.19039		3.01690
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.50807		0.33140
+ 
+
+
+ Repatition \#3
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.42222		0.63463
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.76961		1.37543
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.46696		0.32029
+ 
+
+
+ Repatition \#4
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.44971		0.87961
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.92600		3.47738		
+
+
+Server utilization:
+
+Queue 0		Queue 1
+
+------------------------------
+
+0.48056		0.35766
+
+
+
+ Repatition \#5
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.48508		0.78433
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 1.15975		3.02944
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.51142		0.34452
+ 
+
+
+ Repatition \#6
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.47200		0.80295
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 1.14344		1.96459
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.49449		0.35561
+ 
+
+
+ Repatition \#7
+ 
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.42687		0.74208
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 1.33535		1.79163
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.49295		0.33580
+ 
+
+
+ Repatition \#8
+ 
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.52284		0.77525
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 1.19481		1.93199
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.50994		0.33564
+ 
+
+
+ Repatition \#9
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.45470		0.78204
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+0.89740		1.63204		
+
+
+Server utilization:
+
+Queue 0		Queue 1
+
+------------------------------
+
+0.47993		0.34736
+
+
+
+ Repatition \#10
+
+
+
+ Average delay in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.45008		0.78338
+ 
+
+
+ Average number in queues:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.88713		2.26395
+ 
+
+
+ Server utilization:
+ 
+ Queue 0		Queue 1
+ 
+ ------------------------------
+ 
+ 0.45888		0.34738
+
+\newpage
+ 
+
+ \textbf{problem 3 output:}
+
+ System of 2 servers in tandem running 1000.00 minutes
+
+
+
+ Repatition \#1
+
+Mean arrival time: 1.00
+
+Mean service time of server 1: 0.70
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45211		0.79435		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.93165		1.60709		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.48249		0.34030		
+
+
+
+ Repatition \#2
+
+Mean arrival time: 0.94
+
+Mean service time of server 1: 0.67
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.44502		0.85674		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.25821		10.30189		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.51616		0.34403		
+
+
+
+ Repatition \#3
+
+Mean arrival time: 0.88
+
+Mean service time of server 1: 0.65
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45955		0.85203		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.30149		15.08329		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.54434		0.32738		
+
+
+
+ Repatition \#4
+
+Mean arrival time: 0.83
+
+Mean service time of server 1: 0.62
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.43887		0.75582		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+2.19332		27.99343		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.56738		0.31718		
+
+
+
+ Repatition \#5
+
+Mean arrival time: 0.77
+
+Mean service time of server 1: 0.59
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45330		0.73172		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+2.00770		36.38109		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.58899		0.29804		
+
+
+
+ Repatition \#6
+
+Mean arrival time: 0.71
+
+Mean service time of server 1: 0.56
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.41078		0.73270		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.72747		28.79179		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.57219		0.31349		
+
+
+
+ Repatition \#7
+
+Mean arrival time: 0.65
+
+Mean service time of server 1: 0.54
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.45908		0.69106		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+1.97453		46.37239		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.60717		0.27013		
+
+
+
+ Repatition \#8
+
+Mean arrival time: 0.60
+
+Mean service time of server 1: 0.51
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.47956		0.59277		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+4.74412		72.42811		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.67666		0.26546		
+
+
+
+ Repatition \#9
+
+Mean arrival time: 0.54
+
+Mean service time of server 1: 0.48
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.40870		0.57002		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+4.66802		85.57726		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.68554		0.23739		
+
+
+
+ Repatition \#10
+
+Mean arrival time: 0.48
+
+Mean service time of server 1: 0.45
+
+Mean service time of server 2: 0.90
+
+
+
+Average delay in queues:
+
+Queue 0		Queue 1		
+
+
+
+0.43152		0.45394		
+
+
+
+Average number in queues:
+
+Queue 0		Queue 1		
+
+
+
+11.49265		98.54865		
+
+
+
+Server utilization:
+
+Queue 0		Queue 1		
+
+
+
+0.75104		0.21077		
+
+
+
+ 
+
+
+
+
+\end{document}

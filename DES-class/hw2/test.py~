@@ -1,0 +1,19 @@
+class stupid:
+
+    def __init__(self):
+        self.dumb = 2
+
+
+
+def make_dumber(a_stupid):
+    a_stupid.dumb = 3
+
+
+def main():
+    test = stupid()
+    
+    make_dumber(test)
+
+    print(test.dumb)
+
+main()

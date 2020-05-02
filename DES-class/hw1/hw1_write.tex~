@@ -1,0 +1,31 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
+
+\begin{document}
+
+\title{Optimization Hw1}
+\author{Toby Harvey}
+\maketitle
+\noindent\textbf{Problem 1}
+
+Some notes on my program:
+
+The input format for the program I wrote called tandum\_queue is the following:
+
+[number of queues] [number of minutes to run for]
+[interval time mean] [first service time mean]
+[second service time mean]
+...
+[nth service time mean]
+
+
+
+\end{document}
