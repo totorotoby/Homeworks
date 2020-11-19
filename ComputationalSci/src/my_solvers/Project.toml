@@ -1,0 +1,4 @@
+name = "my_solvers"
+uuid = "30d0de29-b22f-49d7-80bc-bebaab329748"
+authors = ["tobiasharvey "]
+version = "0.1.0"

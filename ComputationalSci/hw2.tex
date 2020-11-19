@@ -1,0 +1,251 @@
+\documentclass[a4paper,10pt,BCOR10mm,oneside,headsepline]{scrartcl}
+\usepackage{amsmath, mathtools}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+
+\usepackage{typearea, url}
+\areaset{17cm}{26cm}
+\setlength{\topmargin}{-1cm}
+\usepackage{scrpage2}
+\pagestyle{scrheadings}
+
+\usepackage[T1]{fontenc}
+\usepackage{beramono}
+\usepackage{listings}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+
+%%
+%% Julia definition (c) 2014 Jubobs
+%%
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+   alsoother={$},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+\lstset{%
+    language         = Julia,
+    basicstyle       = \ttfamily,
+    keywordstyle     = \bfseries\color{blue},
+    stringstyle      = \color{magenta},
+    commentstyle     = \color{ForestGreen},
+    showstringspaces = false,
+}
+
+
+
+\ihead{HW1: CIS 410/510, Computational Science}
+\ohead{\pagemark}
+\chead{}
+\cfoot{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Beginning of questionnaire command definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% 2010, 2012 by Sven Hartenstein
+%% mail@svenhartenstein.de
+%% http://www.svenhartenstein.de
+%%
+%% Please be warned that this is NOT a full-featured framework for
+%% creating (all sorts of) questionnaires. Rather, it is a small
+%% collection of LaTeX commands that I found useful when creating a
+%% questionnaire. Feel free to copy and adjust any parts you like.
+%% Most probably, you will want to change the commands, so that they
+%% fit your taste.
+%%
+%% Also note that I am not a LaTeX expert! Things can very likely be
+%% done much more elegant than I was able to. If you have suggestions
+%% about what can be improved please send me an email. I intend to
+%% add good tipps to my website and to name contributers of course.
+%%
+%% 10/2012: Thanks to karathan for the suggestion to put \noindent
+%% before \rule!
+
+%% \Qq = Questionaire question. Oh, this is just too simple. It helps
+%% making it easy to globally change the appearance of questions.
+\newcommand{\Qq}[1]{\textbf{#1}}
+
+%% \QO = Circle or box to be ticked. Used both by direct call and by
+%% \Qrating and \Qlist.
+\newcommand{\QO}{$\Box$}% or: $\ocircle$
+
+%% \Qrating = Automatically create a rating scale with NUM steps, like
+%% this: 0--0--0--0--0.
+\newcounter{qr}
+\newcommand{\Qrating}[1]{\QO\forloop{qr}{1}{\value{qr} < #1}{---\QO}}
+
+%% \Qline = Again, this is very simple. It helps setting the line
+%% thickness globally. Used both by direct call and by \Qlines.
+\newcommand{\Qline}[1]{\noindent\rule{#1}{0.6pt}}
+
+%% \Qlines = Insert NUM lines with width=\linewith. You can change the
+%% \vskip value to adjust the spacing.
+\newcounter{ql}
+\newcommand{\Qlines}[1]{\forloop{ql}{0}{\value{ql}<#1}{\vskip0em\Qline{\linewidth}}}
+
+%% \Qlist = This is an environment very similar to itemize but with
+%% \QO in front of each list item. Useful for classical multiple
+%% choice. Change leftmargin and topsep accourding to your taste.
+\newenvironment{Qlist}{%
+\renewcommand{\labelitemi}{\QO}
+\begin{itemize}[leftmargin=1.5em,topsep=-.5em]
+}{%
+\end{itemize}
+}
+
+%% \Qtab = A "tabulator simulation". The first argument is the
+%% distance from the left margin. The second argument is content which
+%% is indented within the current row.
+\newlength{\qt}
+\newcommand{\Qtab}[2]{
+\setlength{\qt}{\linewidth}
+\addtolength{\qt}{-#1}
+\hfill\parbox[t]{\qt}{\raggedright #2}
+}
+
+%% \Qitem = Item with automatic numbering. The first optional argument
+%% can be used to create sub-items like 2a, 2b, 2c, ... The item
+%% number is increased if the first argument is omitted or equals 'a'.
+%% You will have to adjust this if you prefer a different numbering
+%% scheme. Adjust topsep and leftmargin as needed.
+\newcounter{itemnummer}
+\newcommand{\Qitem}[2][]{% #1 optional, #2 notwendig
+\ifthenelse{\equal{#1}{}}{\stepcounter{itemnummer}}{}
+\ifthenelse{\equal{#1}{a}}{\stepcounter{itemnummer}}{}
+\begin{enumerate}[topsep=2pt,leftmargin=2.8em]
+\item[\textbf{\arabic{itemnummer}#1.}] #2
+\end{enumerate}
+}
+
+%% \QItem = Like \Qitem but with alternating background color. This
+%% might be error prone as I hard-coded some lengths (-5.25pt and
+%% -3pt)! I do not yet understand why I need them.
+\definecolor{bgodd}{rgb}{0.8,0.8,0.8}
+\definecolor{bgeven}{rgb}{0.9,0.9,0.9}
+\newcounter{itemoddeven}
+\newlength{\gb}
+\newcommand{\QItem}[2][]{% #1 optional, #2 notwendig
+\setlength{\gb}{\linewidth}
+\addtolength{\gb}{-5.25pt}
+\ifthenelse{\equal{\value{itemoddeven}}{0}}{%
+\noindent\colorbox{bgeven}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+\stepcounter{itemoddeven}%
+}{%
+\noindent\colorbox{bgodd}{\hskip-3pt\begin{minipage}{\gb}\Qitem[#1]{#2}\end{minipage}}%
+\setcounter{itemoddeven}{0}%
+}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% End of questionnaire command definitions %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{center}
+\textbf{\large CIS 410/510 HW 1 - due Friday October 9th at 5 p.m.%\footnote{Subject to change}
+}
+\end{center}\vskip1em
+
+\noindent For all of the user-defined functions below, provide documentation according to the Julia documentation page \url{https://docs.julialang.org/en/v1/manual/documentation/index.html} - see sample code below for the most basic documentation that I expect. \\
+
+\noindent Your report should be: \\
+\noindent i.  Written preferably in Latex, but Word (or any word processor) fine. \\
+\noindent ii.  Composed of a single paragraph (*or two, but keep it less than half a page) discussing your findings.\\
+\noindent iii.  Include 1-2 illustrative tables or figures showing your results. \\
+
+\noindent Your code should be:\\
+\noindent iv.  Written in Julia.\\
+\noindent v.  Attached at the end of your report. \\
+
+\noindent Upload your report in a single (.pdf, .doc etc.) file to Canvas. You will be graded on correctness of code, thoroughness in addressing the prompts and drawing conclusions from your findings.    \\
+
+\vspace{4mm}
+
+\noindent 1. Not all square matrices admit an LU-factorization, but they do admit an LUP-factorization, where P is a permutation matrix. Develop the Julia script $my\_solvers.jl$ to include the function $computeLUP()$ that computes and returns an  $LUP$-decomposition of a square matrix $A$ using partial pivoting, following algorithm 5.3.1 in the textbook (modified to include partial pivoting).   Next add a function $LUPsolve()$ that solves $Ax = b$ by first computing an LUP-factorization using computeLUP() and then doing forward and backward substitution.  Include in your code tests that confirm accuracy of your functions using $A = rand(N,N)$. Time the two (albeit unoptimized) functions using the $@time$ macro using $N \times N$ matrices with $N = 10, 100$ and $1,000$. \\
+  
+    
+%\noindent 4 [510 only].  Invoke the (optimized) native Julia functions to perform a direct solve of $Ax = b$ (where $A$ is a random, dense, positive definite matrix) using both an LUP-factorization and a CG solve (Julia IterativeSolvers package).  Compute the time taken to perform each solve (i.e. for the direct solve, do not count the time it takes to obtain the factorization).  For the CG solve, set $\epsilon = 10^-9$ and experiment with different initial conditions. For N = 10, 100, 1000, how do the two methods compare? Does one seem favorable over the other? \\
+
+
+\newpage 
+\noindent Below is the listing for the file $matrix\_multiply.jl$.
+
+\begin{lstlisting}
+using Printf
+using LinearAlgebra
+
+"""
+    matmul_naive!(c, a, b)
+
+Compute the product of matrices `a` and `b` and store in `c`.
+
+# Examples
+```jldoctest
+julia> C = zeros(3,3); A = 7 .* ones(3,3); B = Matrix{Int64}(I, 3,3);
+julia> matmul_naive!(C, A, B)
+julia> C
+3x3 Array{Float64,2}:
+ 7.0  7.0  7.0
+ 7.0  7.0  7.0
+ 7.0  7.0  7.0
+```
+"""
+function matmul_naive!(C, A, B)
+    (N, M) = size(A)
+    (P, R) = size(B)
+    (n, r) = size(C)
+    @assert M == P # check matrix size
+    @assert n == N
+    @assert r == R
+
+    for i = 1:N
+        for j = 1:R
+            for k = 1:M
+                C[i, j] += A[i, k] * B[k, j]
+            end
+        end
+    end
+
+end
+
+N = 100
+M = 200
+L = 50
+
+C = zeros(N, L)
+A = rand(N, M)
+B = rand(M, L)
+
+#= Do some timing tests
+   between Julia native
+   and naive matrix multiply.
+=#
+println()
+println("Julia's  Native A * B")
+@time C = A * B
+@time C = A * B
+println("---------------")
+println()
+
+println("Using Naive! Function!")
+D = zeros(N, L)
+matmul_naive!(D, A, B)  #call once to compile
+@time matmul_naive!(D, A, B)
+@time matmul_naive!(D, A, B)
+C += (A * B)
+C += (A * B)
+@printf "norm(C - D) = \x1b[31m %e \x1b[0m\n" norm(C - D)
+println("---------------")
+println()
+\end{lstlisting}
+\end{document}
