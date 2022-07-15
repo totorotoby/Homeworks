@@ -1,0 +1,10 @@
+9.5/10
+
+The lower perforamnce in the atomic version is likely due to having the atomic inside the loop.
+Can you think of a way to bring it outside?
+
+The likely bottleneck for the MC method is the random number generation.
+You might be able to make it faster by using a linearized index.
+
+The report is difficult to follow.
+It's better if you label the figures and refer to them specifically.

@@ -1,0 +1,9 @@
+8.5/10
+Good survey.
+Comments:
+1) Almost 2/5 pages was spent on explaining the basics of PDE.
+   While this is useful for some audience (and useful for a proper 20+ page 
+   survey), it would have been better if these were used for the survey portion.
+2) This is a very popular area for GPU acceleration. Weren't there any more
+   recent papers to cite?
+3) Overall, a nice categorization of areas (implicit, explicit, single GPU, multi-GPU), and good explanation.

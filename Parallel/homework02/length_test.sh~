@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for (( n = 2 ; n <= 1073741824 ; n = n * 2))
+do
+    echo $n
+done

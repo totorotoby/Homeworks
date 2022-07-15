@@ -1,0 +1,36 @@
+16
+
+PU SpMV        0.004673     
+GPU SpMV        0.002924                                                     
+GPU ELL SpMV    0.004565
+
+32
+CPU SpMV        0.004677                              
+GPU Alloc       0.165607                                                                                                                              
+GPU SpMV        0.003159                                                     
+GPU ELL SpMV    0.004325
+
+
+64
+
+CPU SpMV        0.004646                                                   
+GPU Alloc       0.165055                                                                                                                    
+GPU SpMV        0.002383                                                      
+GPU ELL SpMV    0.002852
+
+
+128
+
+
+CPU SpMV        0.004743                                                      
+GPU Alloc       0.165243                                                                                                                   
+GPU SpMV        0.001765                                                     
+GPU ELL SpMV    0.00242
+
+
+256
+
+CPU SpMV        0.004737                                                      
+GPU Alloc       0.167388                                                                                                                      
+GPU SpMV        0.003550                                                   
+GPU ELL SpMV    0.004000 

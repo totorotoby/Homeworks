@@ -1,0 +1,3 @@
+9/10
+Implementations are correct.
+The report could have done a better job showing how the performance scales with the number of threads, and an explanation as to why CSR might perform better than COO.
